@@ -52,8 +52,8 @@ jobs:
       - name: Build styles
         run: npm run build:styles
 
-      - name: Build components
-        run: npm run build:components
+      # - name: Build components
+      #   run: npm run build:components
 
       - name: Upload UI dist
         uses: actions/upload-artifact@v4
