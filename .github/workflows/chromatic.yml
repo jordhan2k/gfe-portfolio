@@ -48,6 +48,7 @@ jobs:
 
   build-ui:
     runs-on: ubuntu-latest
+    needs: root
     defaults:
       run:
         working-directory: packages/ui
