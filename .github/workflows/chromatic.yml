@@ -118,11 +118,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 20
-      #     cache: npm
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm install
@@ -134,8 +134,8 @@ jobs:
       #   run: npm run build:components --workspace=packages/ui
 
       - name: Publish to Chromatic
-        run: npm run chromatic --workspace=apps/docs
-        env:
+        uses: chromaui/action@latest
+        with:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           workingDir: apps/docs
