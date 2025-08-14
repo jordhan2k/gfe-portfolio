@@ -1,18 +1,17 @@
 {
   "name": "@repo/ui",
   "version": "0.0.0",
-  "license": "MIT",
-  "imports": {
-    "#dep/*": [
-      "./src/*.ts",
-      "./src/*.tsx"
-    ]
-  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./*": "./*.tsx",
-    "./components/*": "./components/*.tsx"
+    "./*": "./dist/*.js"
   },
+  "license": "MIT",
   "scripts": {
     "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "build:components": "tsc",
@@ -33,8 +32,5 @@
     "eslint": "^9.33.0",
     "tailwindcss": "^4.1.5",
     "typescript": "5.9.2"
-  },
-  "dependencies": {
-    "@remixicon/react": "^4.6.0"
   }
 }

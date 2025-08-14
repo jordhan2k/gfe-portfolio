@@ -16,7 +16,7 @@ export function Card({
       rel="noopener noreferrer"
       target="_blank"
     >
-      <h2 className="ui:mb-3 ui:text-2xl ui:font-semibold">
+      <h2 className="ui:mb-3 ui:text-2xl ui:font-semibold ui:text-indigo-500">
         {title}{" "}
         <span className="ui:inline-block ui:transition-transform group-hover:ui:translate-x-1 motion-reduce:ui:transform-none">
           -&gt;
