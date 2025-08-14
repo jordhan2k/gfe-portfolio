@@ -28,7 +28,80 @@
 #           token: ${{ secrets.GITHUB_TOKEN }}
 #           workingDir: apps/docs
 
-name: Build UI & Run Chromatic
+# name: Build UI & Run Chromatic
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+
+# jobs:
+#   root:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Install root dependencies
+#         run: npm install
+
+#   build-ui:
+#     runs-on: ubuntu-latest
+#     needs: root
+#     defaults:
+#       run:
+#         working-directory: packages/ui
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build styles
+#         run: npm run build:styles
+
+#       # - name: Build components
+#       #   run: npm run build:components
+
+#       - name: Upload UI dist
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: ui-dist
+#           path: packages/ui/dist
+
+#   chromatic:
+#     runs-on: ubuntu-latest
+#     needs: build-ui
+#     defaults:
+#       run:
+#         working-directory: apps/docs
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+
+#       - name: Download UI dist
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: ui-dist
+#           path: packages/ui/dist
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build and publish Storybook
+#         uses: chromaui/action@latest
+#         # Options required for Chromatic's GitHub Action
+#         with:
+#           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
+#           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           workingDir: apps/docs
+
+name: Build UI and Run Chromatic
 
 on:
   push:
@@ -37,66 +110,32 @@ on:
     branches: [main]
 
 jobs:
-  root:
+  build-and-chromatic:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install root dependencies
-        run: npm install
-
-  build-ui:
-    runs-on: ubuntu-latest
-    needs: root
-    defaults:
-      run:
-        working-directory: packages/ui
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build styles
-        run: npm run build:styles
-
-      # - name: Build components
-      #   run: npm run build:components
-
-      - name: Upload UI dist
-        uses: actions/upload-artifact@v4
-        with:
-          name: ui-dist
-          path: packages/ui/dist
-
-  chromatic:
-    runs-on: ubuntu-latest
-    needs: build-ui
-    defaults:
-      run:
-        working-directory: apps/docs
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Download UI dist
-        uses: actions/download-artifact@v4
-        with:
-          name: ui-dist
-          path: packages/ui/dist
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20
+      #     cache: npm
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build and publish Storybook
-        uses: chromaui/action@latest
-        # Options required for Chromatic's GitHub Action
-        with:
-          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Build UI styles
+        run: npm run build:styles --workspace=packages/ui
+
+      # - name: Build UI components
+      #   run: npm run build:components --workspace=packages/ui
+
+      - name: Publish to Chromatic
+        run: npm run chromatic --workspace=apps/docs
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           workingDir: apps/docs
