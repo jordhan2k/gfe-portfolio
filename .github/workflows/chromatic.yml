@@ -136,6 +136,6 @@ jobs:
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           workingDir: apps/docs
