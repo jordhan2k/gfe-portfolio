@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { ModalDialog } from '@repo/ui/components/ui//modal-dialog';
+import { ModalDialog } from '@repo/ui/components/ui/modal-dialog';
 
 const meta = {
   title: 'components/Modal dialog',
