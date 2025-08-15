@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Checkbox } from '@repo/ui/src/components/form/checkbox';
+import { Checkbox } from '@repo/ui/components/form/checkbox';
 import { useState } from 'react';
 
 const meta = {

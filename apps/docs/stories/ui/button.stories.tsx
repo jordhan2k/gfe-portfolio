@@ -1,6 +1,6 @@
 import { RiStarLine } from '@remixicon/react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Button } from '@repo/ui/src/components/ui/button';
+import { Button } from '@repo/ui/components/ui/button';
 
 const meta = {
   title: 'Components/Button',

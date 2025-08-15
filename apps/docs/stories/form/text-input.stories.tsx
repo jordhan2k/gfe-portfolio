@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { TextInput } from '@repo/ui/src/components/form/text-input';
+import { TextInput } from '@repo/ui/components/form/text-input';
 import { RiLockLine, RiMailLine } from '@remixicon/react';
 
 const meta = {

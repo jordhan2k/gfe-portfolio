@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { TextArea } from '@repo/ui/src/components/form/text-area';
+import { TextArea } from '@repo/ui/components/form/text-area';
 import { useState } from 'react';
 
 const meta = {

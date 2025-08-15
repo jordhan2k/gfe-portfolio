@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Toggle } from '@repo/ui/src/components/form/toggle';
+import { Toggle } from '@repo/ui/components/form/toggle';
 import { useState } from 'react';
 
 const meta = {

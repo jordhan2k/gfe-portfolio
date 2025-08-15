@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { NavBar } from '@repo/ui/src/components/navigation/nav-bar';
+import { NavBar } from '@repo/ui/components/navigation/nav-bar';
 
 const meta = {
   title: 'navigation/Navbar',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { TabButton, TabList, TabPanel, Tabs } from '@repo/ui/src/components/ui/tab-menu';
+import { TabButton, TabList, TabPanel, Tabs } from '@repo/ui/components/ui/tab-menu';
 
 const meta = {
   title: 'components/Tabs',

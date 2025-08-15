@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import ToastWrapper from './toast-wrapper';
-import Toast from '@repo/ui/src/components/ui/toast';
-import { Toaster } from '@repo/ui/src/components/ui/toaster';
+import Toast from '@repo/ui/components/ui/toast';
+import { Toaster } from '@repo/ui/components/ui/toaster';
 
 const meta = {
   title: 'components/Toast',

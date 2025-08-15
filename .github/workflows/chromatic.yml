@@ -1,113 +1,16 @@
-# # Workflow name
-# name: Deploy Storybook to Chromatic
-
-# on:
-#   push:
-#     branches:
-#       - main # on push to main only
-
-# jobs:
-#   chromatic:
-#     name: "Run chromatic"
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-#         with:
-#           fetch-depth: 0
-#       - name: Install dependencies
-#         run: npm install
-#         #👇 Adds Chromatic as a step in the workflow
-#       - name: Build and publish Storybook
-#         uses: chromaui/action@latest
-#         # Options required for Chromatic's GitHub Action
-#         with:
-#           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
-#           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#           workingDir: apps/docs
-
-# name: Build UI & Run Chromatic
-
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#     branches: [main]
-
-# jobs:
-#   root:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Install root dependencies
-#         run: npm install
-
-#   build-ui:
-#     runs-on: ubuntu-latest
-#     needs: root
-#     defaults:
-#       run:
-#         working-directory: packages/ui
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Install dependencies
-#         run: npm install
-
-#       - name: Build styles
-#         run: npm run build:styles
-
-#       # - name: Build components
-#       #   run: npm run build:components
-
-#       - name: Upload UI dist
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: ui-dist
-#           path: packages/ui/dist
-
-#   chromatic:
-#     runs-on: ubuntu-latest
-#     needs: build-ui
-#     defaults:
-#       run:
-#         working-directory: apps/docs
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-#         with:
-#           fetch-depth: 0
-
-#       - name: Download UI dist
-#         uses: actions/download-artifact@v4
-#         with:
-#           name: ui-dist
-#           path: packages/ui/dist
-
-#       - name: Install dependencies
-#         run: npm install
-
-#       - name: Build and publish Storybook
-#         uses: chromaui/action@latest
-#         # Options required for Chromatic's GitHub Action
-#         with:
-#           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
-#           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#           workingDir: apps/docs
-
-name: Build UI and Run Chromatic
+name: Build UI and Deploy storybook to Chromatic
 
 on:
   push:
     branches: [main]
+    paths:
+      - "apps/docs/**"
+      - "packages/ui/**"
   pull_request:
     branches: [main]
+    paths:
+      - "apps/docs/**"
+      - "packages/ui/**"
 
 jobs:
   build-and-chromatic:
@@ -130,11 +33,12 @@ jobs:
       - name: Build UI styles
         run: npm run build:styles --workspace=packages/ui
 
-      # - name: Build UI components
-      #   run: npm run build:components --workspace=packages/ui
+      - name: Build UI components
+        run: npm run build:components --workspace=packages/ui
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
+        # Options required for Chromatic's GitHub Action
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}

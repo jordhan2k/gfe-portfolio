@@ -1,8 +1,8 @@
 'use client'
 
 // import { Button } from '@/components/ui/button'
-import { useToast } from '@repo/ui/src/hooks/use-toast';
-import { Button } from '@repo/ui/src/components/ui/button';
+import { useToast } from '@repo/ui/hooks/use-toast';
+import { Button } from '@repo/ui/components/ui/button';
 import React from 'react'
 
 function ToastWrapper() {

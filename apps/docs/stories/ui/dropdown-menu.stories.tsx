@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { DropdownMenu } from '@repo/ui/components/ui/dropdown-menu';
 
-import { DropdownMenu } from '@repo/ui/src/components/ui/dropdown-menu';
 import { ReactNode } from 'react';
 import { RiGlobeLine, RiLock2Line, RiMistFill } from '@remixicon/react';
 

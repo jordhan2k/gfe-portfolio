@@ -2,19 +2,21 @@
   "name": "@repo/ui",
   "version": "0.0.0",
   "license": "MIT",
-  "sideEffects": [
-    "**/*.css"
-  ],
   "imports": {
     "#dep/*": [
       "./src/*.ts",
       "./src/*.tsx"
     ]
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./*": "./*.tsx",
-    "./components/*": "./components/*.tsx"
+    "./*": "./dist/*.js"
   },
   "scripts": {
     "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
