@@ -12,7 +12,8 @@
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
