@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-indigo-700 text-white hover:bg-indigo-800 focus:bg-indigo-800 focus:ring-indigo-800/20 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:shadow-none!",
-        secondary: "bg-white border border-neutral-200 text-neutral-900 hover:text-neutral-950 hover:bg-neutral-50 focus:bg-neutral-50 focus:shadow-none! focus:ring-indigo-800/20 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:shadow-none! disabled:border-none",
+        secondary: "bg-white border border-neutral-200 text-neutral-950 hover:text-neutral-950 hover:bg-neutral-50 focus:bg-neutral-50 focus:shadow-none! focus:ring-indigo-800/20 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:shadow-none! disabled:border-none",
         tertiary: "shadow-none! text-indigo-700 hover:bg-neutral-50 focus:bg-neutral-50  focus:ring-indigo-800/20 disabled:text-neutral-400 disabled:bg-transparent!",
         "link-color": "shadow-none! p-0! text-indigo-700 hover:text-indigo-800 focus:text-indigo-800 focus:bg-neutral-50 focus:ring-indigo-800/20 disabled:text-neutral-400",
         "link-gray": "shadow-none p-0! text-neutral-600 hover:text-neutral-900 focus:text-neutral-900 focus:bg-neutral-50 focus:ring-indigo-800/20 disabled:text-neutral-400",
@@ -30,18 +30,18 @@ const buttonVariants = cva(
     }
   })
 
+type ButtonProps = React.ComponentProps<"button">
+  & VariantProps<typeof buttonVariants>
+
 function Button({
   variant,
   size,
   className,
   ...props
-}: React.ComponentProps<"button">
-  & VariantProps<typeof buttonVariants>) {
+}: ButtonProps) {
   return (
     <button role='button' className={cn(buttonVariants({ variant, size, className }))} {...props}></button>
   )
 }
 
-
-
-export { Button }
+export { Button, type ButtonProps }

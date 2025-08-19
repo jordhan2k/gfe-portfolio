@@ -1,7 +1,7 @@
 import "@repo/ui/styles.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { notoSans } from "@repo/ui/config/fonts";
+import { notoSans } from "@repo/ui/config";
 
 
 export const metadata: Metadata = {

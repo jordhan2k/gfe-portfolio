@@ -19,7 +19,8 @@
     "./styles.css": "./dist/index.css",
     "./*": "./*.tsx",
     "./components/*": "./src/components/*.tsx",
-    "./hooks/*": "./src/hooks/*.tsx"
+    "./hooks/*": "./src/hooks/*.tsx",
+    "./config": "./src/config/index.ts"
   },
   "scripts": {
     "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
@@ -30,7 +31,8 @@
     "lint": "eslint src --max-warnings 0"
   },
   "peerDependencies": {
-    "react": "^19"
+    "react": "^19",
+    "next": "^15.4.2"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

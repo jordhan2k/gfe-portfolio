@@ -28,6 +28,9 @@ const badgeVariants = cva(
   }
 )
 
+type BadgeProps = React.HTMLAttributes<HTMLSpanElement>
+  & VariantProps<typeof badgeVariants>
+
 
 function Badge({
   children,
@@ -35,8 +38,7 @@ function Badge({
   variant,
   size,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement>
-  & VariantProps<typeof badgeVariants>) {
+}: BadgeProps) {
   return (
     <span
       className={cn(badgeVariants({ variant, size, className }))}
@@ -47,4 +49,4 @@ function Badge({
   );
 }
 
-export { Badge }
+export { Badge, type BadgeProps }
