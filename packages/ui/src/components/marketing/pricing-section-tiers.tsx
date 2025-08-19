@@ -76,5 +76,5 @@ function PricingSectionTiers({
   )
 }
 
-export { PricingSectionTiers };
+export { PricingSectionTiers, type PricingSectionTiersProps };
 
