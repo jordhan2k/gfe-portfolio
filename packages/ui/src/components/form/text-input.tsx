@@ -2,9 +2,20 @@
 
 import { cn } from '#dep/lib/utils'
 import { RiEyeCloseLine, RiEyeLine, RiQuestionLine } from '@remixicon/react';
-import clsx from 'clsx';
+import clsx, { ClassValue } from 'clsx';
 import React from 'react'
 import { Button } from '../ui/button';
+
+type TextInputProps = Omit<React.ComponentProps<'input'>, 'type'>
+  & {
+    label?: string;
+    hintText?: string | React.ReactNode;
+    leadingIcon?: React.ReactNode;
+    helpIcon?: boolean;
+    error?: string | React.ReactNode;
+    type?: 'text' | 'email' | 'password';
+    containerClassname?: ClassValue;
+  }
 
 function TextInput({
   name,
@@ -17,20 +28,13 @@ function TextInput({
   className,
   error,
   disabled,
+  containerClassname,
   ...props
-}: Omit<React.ComponentProps<'input'>, 'type'>
-  & {
-    label?: string;
-    hintText?: string | React.ReactNode;
-    leadingIcon?: React.ReactNode;
-    helpIcon?: boolean;
-    error?: string | React.ReactNode;
-    type?: 'text' | 'email' | 'password';
-  }) {
+}: TextInputProps) {
   const [localType, setLocalType] = React.useState(type);
 
   return (
-    <div className='w-full flex flex-col gap-1.5'>
+    <div className={cn('w-full flex flex-col gap-1.5', containerClassname)}>
       {label ? <label className='w-full text-sm font-medium text-gray-700' htmlFor={name}>{label}</label> : null}
       <div className={clsx('w-full flex relative items-center', {
         '[&_svg]:text-red-600': error
@@ -80,4 +84,4 @@ function TextInput({
   )
 }
 
-export { TextInput }
+export { TextInput, type TextInputProps }

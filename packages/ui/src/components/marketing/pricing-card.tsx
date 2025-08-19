@@ -21,7 +21,7 @@ const cardVariants = cva(
   {
     variants: {
       popular: {
-        true: 'border-indigo-600',
+        true: 'border-indigo-600 shadow-sm',
         false: ''
       },
     },
