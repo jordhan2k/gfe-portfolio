@@ -1,7 +1,8 @@
-import "@repo/ui/styles.css";
 import "./globals.css";
+import "@repo/ui/styles.css";
 import type { Metadata } from "next";
 import { notoSans } from "@repo/ui/config";
+import { Toaster } from "@repo/ui/components/ui/toaster";
 
 
 export const metadata: Metadata = {
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSans.className} antialiased`}>{children}</body>
+      <body className={`${notoSans.className} antialiased`}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
