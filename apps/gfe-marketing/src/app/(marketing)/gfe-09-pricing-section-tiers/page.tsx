@@ -1,6 +1,11 @@
 import { PricingSectionTiers, PricingSectionTiersProps } from '@repo/ui/components/marketing/pricing-section-tiers'
+import { Metadata } from 'next';
 import React from 'react'
 
+export const metadata: Metadata = {
+  title: 'Pricing section tiers',
+  description: "Pricing section tiers allow users to explore different pricing plans and find the most suitable one to their needs",
+};
 
 const props: PricingSectionTiersProps = {
   supportingText: "Pricing Tiers",
