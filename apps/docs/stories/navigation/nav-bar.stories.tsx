@@ -12,5 +12,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {}
+  args: {
+
+    navLinks: [
+      { label: 'Home', href: '' },
+      { label: 'Features', href: '' },
+      { label: 'Pricing', href: '' },
+      { label: 'About us', href: '' },
+      { label: 'Contact', href: '' },
+    ],
+
+  }
 };

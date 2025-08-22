@@ -1,5 +1,4 @@
 import { RiCheckFill } from '@remixicon/react';
-import React from 'react'
 import { Badge, BadgeProps } from '../ui/badge';
 import { Button, ButtonProps } from '../ui/button';
 
@@ -30,36 +29,36 @@ function PricingSection({
 }: PricingSectionProps) {
   return (
     <section
-      className="flex flex-col gap-y-16 w-full bg-white shadow-sm rounded-[0.25rem] md:rounded-md px-3 py-12 md:px-4 md:py-16 lg:px-24 lg:py-24"
+      className="ui:flex ui:flex-col ui:gap-y-16 ui:w-full ui:bg-white ui:shadow-sm ui:rounded-[0.25rem] ui:md:rounded-md ui:px-3 ui:py-12 ui:md:px-4 ui:md:py-16 ui:lg:px-24 ui:lg:py-24"
     >
-      <div className="text-center">
-        <div className="text-indigo-700 text-base font-semibold mb-3">
+      <div className="ui:text-center">
+        <div className="ui:text-indigo-700 ui:text-base ui:font-semibold ui:mb-3">
           {supportingText}
         </div>
-        <h2 className="text-neutral-900 text-3xl md:text-5xl font-semibold mb-5">
+        <h2 className="ui:text-neutral-900 ui:text-3xl ui:md:text-5xl ui:font-semibold ui:mb-5">
           {title}
         </h2>
-        <p className="text-neutral-600 text-lg md:text-xl font-normal">
+        <p className="ui:text-neutral-600 ui:text-lg ui:md:text-xl ui:font-normal">
           {description}
         </p>
       </div>
 
       <div
-        className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12"
+        className="ui:grid ui:grid-cols-4 ui:md:grid-cols-6 ui:lg:grid-cols-12 ui:gap-x-4 ui:gap-y-8 ui:md:gap-x-8 ui:md:gap-y-12"
       >
-        <div className="col-span-4 md:col-span-6 lg:col-span-7 flex items-center">
-          <div className="flex flex-col gap-8 md:gap-16">
-            <div className="text-neutral-900 text-2xl md:text-4xl font-semibold">
+        <div className="ui:col-span-4 ui:md:col-span-6 ui:lg:col-span-7 ui:flex ui:items-center">
+          <div className="ui:flex ui:flex-col ui:gap-8 ui:md:gap-16">
+            <div className="ui:text-neutral-900 ui:text-2xl ui:md:text-4xl ui:font-semibold">
               {featureHeadline}
             </div>
-            <div className="lg:px-4 flex flex-col gap-5">
+            <div className="ui:lg:px-4 ui:flex ui:flex-col ui:gap-5">
               {
                 features.map((feature) => (
-                  <div className="flex flex-row items-center gap-x-2">
-                    <div className="flex items-center justify-center size-6 rounded-full bg-indigo-50 [&_svg]:text-indigo-500">
+                  <div className="ui:flex ui:flex-row ui:items-center ui:gap-x-2">
+                    <div className="ui:flex ui:items-center ui:justify-center ui:size-6 ui:rounded-full ui:bg-indigo-50 ui:[&_svg]:text-indigo-500">
                       <RiCheckFill size={24} />
                     </div>
-                    <div className="text-neutral-600 text-lg font-normal">
+                    <div className="ui:text-neutral-600 ui:text-lg ui:font-normal">
                       {feature}
                     </div>
                   </div>
@@ -69,32 +68,28 @@ function PricingSection({
             </div>
           </div>
         </div>
-        <div className="col-span-4 md:col-span-6 lg:col-span-5">
+        <div className="ui:col-span-4 ui:md:col-span-6 ui:lg:col-span-5">
           <div
-            className="flex flex-col p-8 gap-8 items-center rounded-lg border border-neutral-200 bg-white shadow-sm"
+            className="ui:flex ui:flex-col ui:p-8 ui:gap-8 ui:items-center ui:rounded-lg ui:border ui:border-neutral-200 ui:bg-white ui:shadow-sm"
           >
-            <div className="flex flex-col items-center gap-2">
+            <div className="ui:flex ui:flex-col ui:items-center ui:gap-2">
               <Badge  {...cardProps.badgeProps} />
               <div
-                className="text-neutral-900 text-5xl md:text-6xl font-semibold md:font-bold"
+                className="ui:text-neutral-900 ui:text-5xl ui:md:text-6xl ui:font-semibold ui:md:font-bold"
               >
                 {cardProps.title}
               </div>
-              <div className="text-neutral-600 text-sm font-normal">
+              <div className="ui:text-neutral-600 ui:text-sm ui:font-normal">
                 {cardProps.subtitle}
               </div>
             </div>
 
-            <div className="text-neutral-900 text-xl font-normal text-center">
+            <div className="ui:text-neutral-900 ui:text-xl ui:font-normal ui:text-center">
               {cardProps.description}
             </div>
 
             <Button {...cardProps.buttonProps} />
-            {/* <button
-              className="bg-indigo-700 hover:bg-indigo-800 text-white text-base font-medium py-2.5 px-4 w-full rounded-[0.25rem] transition-colors duration-300"
-            >
-              Buy now
-            </button> */}
+
           </div>
         </div>
       </div>
@@ -102,4 +97,4 @@ function PricingSection({
   )
 }
 
-export { PricingSection }
+export { PricingSection };

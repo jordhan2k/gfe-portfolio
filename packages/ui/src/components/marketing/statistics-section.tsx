@@ -24,32 +24,32 @@ function StatisticsSection({
 }: StatisticsSectionProps) {
   return (
     <section
-      className="flex flex-col gap-y-16 w-full bg-white shadow-sm rounded-[0.25rem] md:rounded-md px-3 py-12 md:px-4 md:py-16 lg:px-24 lg:py-24"
+      className="ui:flex ui:flex-col ui:gap-y-16 ui:w-full ui:bg-white ui:rounded-[0.25rem] ui:md:rounded-md ui:px-3 ui:py-12 ui:md:px-4 ui:md:py-16 ui:lg:px-24 ui:lg:py-24"
     >
-      <div className="text-center">
-        <div className="text-indigo-700 text-base font-semibold mb-3">
+      <div className="ui:text-center">
+        <div className="ui:text-indigo-700 ui:text-base ui:font-semibold ui:mb-3">
           {supportingText}
         </div>
-        <h2 className="text-neutral-900 text-3xl md:text-5xl font-semibold mb-5">
+        <h2 className="ui:text-neutral-900 ui:text-3xl ui:md:text-5xl ui:font-semibold ui:mb-5">
           {title}
         </h2>
-        <p className="text-neutral-600 text-lg md:text-xl font-normal">
+        <p className="ui:text-neutral-600 ui:text-lg ui:md:text-xl ui:font-normal">
           {description}
         </p>
       </div>
 
-      <div className='grid grid-cols-4 md:grid-cols-6 xl:grid-cols-12 gap-x-8 gap-y-8'>
-        <div className='col-span-4 md:col-span-6'>
+      <div className='ui:grid ui:grid-cols-4 ui:md:grid-cols-6 ui:xl:grid-cols-12 ui:gap-x-8 ui:gap-y-8'>
+        <div className='ui:col-span-4 ui:md:col-span-6'>
           <Image
             alt='Statistics section illustration image'
             src={imgUrl}
             width={592}
             height={544}
-            className='object-cover w-full xl:h-full'
+            className='ui:object-cover ui:w-full ui:xl:h-full'
           />
         </div>
-        <div className='col-span-4 md:col-span-6 flex flex-col gap-6 md:gap-8'>
-          <span className='text-lg font-normal text-neutral-600'>Our mission, in numbers</span>
+        <div className='ui:col-span-4 ui:md:col-span-6 ui:flex ui:flex-col ui:gap-6 ui:md:gap-8'>
+          <span className='ui:text-lg ui:font-normal ui:text-neutral-600'>Our mission, in numbers</span>
           {
             metrics?.map((m) => (
               <StatisticsCard

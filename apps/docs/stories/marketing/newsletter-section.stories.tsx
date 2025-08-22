@@ -7,7 +7,7 @@ const meta = {
   component: NewsletterSection,
   tags: ['autodocs'],
   parameters: {
-    layout: 'centered'
+    layout: 'fullscreen'
   }
 } satisfies Meta<typeof NewsletterSection>;
 

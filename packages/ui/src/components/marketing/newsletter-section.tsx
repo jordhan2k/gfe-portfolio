@@ -20,34 +20,34 @@ function NewsletterSection({
 }: NewsletterSectionProps) {
   return (
     <section
-      className={`grid w-full
-        bg-white shadow-sm rounded-[0.25rem]
-        md:rounded-md px-3 py-12 md:px-4
-        md:py-16 lg:px-24 lg:py-24
-        grid-cols-4 md:grid-cols-6
-        xl:grid-cols-12 gap-4
-        md:gap-8 gap-y-12 md:gap-y-8
-        items-center
-        `}
+      className={`ui:grid ui:w-full
+      ui:bg-white ui:shadow-sm ui:rounded-[0.25rem]
+      ui:md:rounded-md ui:px-3 ui:py-12 ui:md:px-4
+      ui:md:py-16 ui:xl:px-24 ui:xl:py-24
+      ui:grid-cols-4 ui:md:grid-cols-6
+      ui:xl:grid-cols-12 ui:gap-4
+      ui:md:gap-8 ui:gap-y-12 ui:md:gap-y-8
+      ui:items-center
+      `}
     >
       <div
-        className="flex flex-col gap-8 md:gap-16 col-span-4 md:col-span-6 xl:col-span-6"
+        className="ui:flex ui:flex-col ui:gap-8 ui:md:gap-16 ui:col-span-4 ui:md:col-span-6 ui:xl:col-span-6"
       >
-        <div className="flex flex-col">
+        <div className="ui:flex ui:flex-col">
           <h1
-            className="text-neutral-900 text-3xl md:text-5xl font-semibold mb-8 md:mb-16"
+            className="ui:text-neutral-900 ui:text-3xl ui:md:text-5xl ui:font-semibold ui:mb-8 ui:md:mb-16"
           >
             {title}
           </h1>
 
-          <div className="flex flex-col gap-5 mb-12">
+          <div className="ui:flex ui:flex-col ui:gap-5 ui:mb-12">
             {
               features?.map((content) => (
-                <div key={content} className="flex flex-row items-center gap-3">
-                  <div className="flex items-center justify-center size-6 rounded-full bg-indigo-50 [&_svg]:text-indigo-500">
+                <div key={content} className="ui:flex ui:flex-row ui:items-center ui:gap-3">
+                  <div className="ui:flex ui:items-center ui:justify-center ui:size-6 ui:rounded-full ui:bg-indigo-50 ui:[&_svg]:text-indigo-500">
                     <RiCheckFill size={24} />
                   </div>
-                  <div className="text-neutral-600 text-lg">
+                  <div className="ui:text-neutral-600 ui:text-lg">
                     {content}
                   </div>
                 </div>
@@ -55,22 +55,22 @@ function NewsletterSection({
             }
           </div>
 
-          <form {...formProps} className='flex flex-col md:flex-row gap-4 md:items-start'>
-            <div className='md:max-w-[330px] w-full flex flex-col gap-4' >
+          <form {...formProps} className='ui:flex ui:flex-col ui:md:flex-row ui:gap-4 ui:md:items-start'>
+            <div className='ui:md:max-w-[330px] ui:w-full ui:flex ui:flex-col ui:gap-4' >
               <TextInput placeholder='Enter your email' type='email' {...textInputProps} />
-              <div className='text-base font-normal text-neutral-600'>We only send you the best! No spam.</div>
+              <div className='ui:text-base ui:font-normal ui:text-neutral-600'>We only send you the best! No spam.</div>
             </div>
             <Button type='submit' variant={'primary'} children={'Subscribe'} />
           </form>
         </div>
       </div>
-      <div className="col-span-4 md:col-span-6 xl:col-span-6">
+      <div className="ui:col-span-4 ui:md:col-span-6 ui:xl:col-span-6">
         <Image
           src={imgUrl}
           width={1000}
           height={1000}
           alt="Newsletter section illustration image"
-          className="w-full object-cover xl:h-full rounded-3xl"
+          className="ui:w-full ui:object-cover ui:xl:h-full ui:rounded-3xl"
         />
       </div>
     </section>

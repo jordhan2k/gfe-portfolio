@@ -1,7 +1,6 @@
 import { cn } from '#dep/lib/utils';
-import { RiCheckFill } from '@remixicon/react'
+import { RiCheckFill } from '@remixicon/react';
 import { ClassValue } from 'clsx';
-import React from 'react'
 
 
 type BulletPointProps = {
@@ -14,15 +13,15 @@ function BulletPoint({
   textClassName
 }: BulletPointProps) {
   return (
-    <div className="flex flex-row items-center gap-3">
-      <div className="flex items-center justify-center size-6 rounded-full bg-indigo-50 [&_svg]:text-indigo-500">
+    <div className="ui:flex ui:flex-row ui:items-center ui:gap-3">
+      <div className="ui:flex ui:items-center ui:justify-center ui:size-6 ui:rounded-full ui:bg-indigo-50 ui:[&_svg]:text-indigo-500">
         <RiCheckFill size={24} />
       </div>
-      <div className={cn("text-neutral-500 text-lg", textClassName)}>
+      <div className={cn("ui:text-neutral-500 ui:text-lg", textClassName)}>
         {content}
       </div>
     </div>
   )
 }
 
-export { BulletPoint }
+export { BulletPoint };

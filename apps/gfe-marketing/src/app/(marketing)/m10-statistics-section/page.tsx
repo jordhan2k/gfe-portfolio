@@ -6,7 +6,6 @@ export default async function StatisticsSectionPage() {
 
   const response = await fetch('https://www.greatfrontend.com/api/projects/challenges/statistics-metrics?latest=true');
   const result = await response.json();
-  console.log(result)
   return (
     <div className='min-h-dvh bg-[linear-gradient(147.52deg,#f9fafb_8.89%,#d2d6db_100.48%)]'>
       <div className='max-w-[90rem] w-auto mx-auto p-4 '>

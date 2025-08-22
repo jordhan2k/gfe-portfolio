@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @import "@repo/tailwind-config";
+
+
+body {
+  background: linear-gradient(147.52deg, #f9fafb 8.89%, #d2d6db 100.48%);
+}

@@ -1,6 +1,7 @@
 import React from "react"
 import { Button, ButtonProps } from "../ui/button";
 import { RiCheckFill } from "@remixicon/react";
+import Image from "next/image";
 
 
 type HeroSectionProps = React.ComponentProps<'section'> & {
@@ -20,28 +21,28 @@ function HeroSection({
 }: HeroSectionProps) {
   return (
     <section
-      className="bg-white drop-shadow-md w-full rounded-md grid py-[6.5rem] px-3 xl:px-24 grid-cols-4 md:grid-cols-6 xl:grid-cols-12 gap-4 md:gap-8 gap-y-12 md:gap-y-8 bg-[linear-gradient(176.17deg,_#f9fafb_0.94%,_#edf0f3_316.54%)]"
+      className="ui:bg-white ui:w-full ui:rounded-md ui:grid ui:py-[6.5rem] ui:px-3 ui:xl:px-24 ui:grid-cols-4 ui:md:grid-cols-6 ui:xl:grid-cols-12 ui:gap-4 ui:md:gap-8 ui:gap-y-12 ui:md:gap-y-8"
     >
       <div
-        className="flex flex-col gap-8 md:gap-16 col-span-4 md:col-span-6 xl:col-span-5 xl:my-auto"
+        className="ui:flex ui:flex-col ui:gap-8 ui:md:gap-16 ui:col-span-4 ui:md:col-span-6 ui:xl:col-span-5 ui:xl:my-auto"
       >
-        <div className="flex flex-col gap-4 md:gap-6">
+        <div className="ui:flex ui:flex-col ui:gap-4 ui:md:gap-6">
           <h1
-            className="text-neutral-900 text-4xl md:text-5xl xl:text-6xl font-semibold"
+            className="ui:text-neutral-900 ui:text-4xl ui:md:text-5xl ui:xl:text-6xl ui:font-semibold"
           >
             {title}
           </h1>
-          <p className="text-neutral-600 text-lg md:text-xl">
+          <p className="ui:text-neutral-600 ui:text-lg ui:md:text-xl">
             {description}
           </p>
-          <div className="flex flex-col gap-5 md:gap-3">
+          <div className="ui:flex ui:flex-col ui:gap-5 ui:md:gap-3">
             {
               bulletPoints?.map((content) => (
-                <div key={content} className="flex flex-row items-center gap-3">
-                  <div className="flex items-center justify-center size-6 rounded-full bg-indigo-50 [&_svg]:text-indigo-500">
+                <div key={content} className="ui:flex ui:flex-row ui:items-center ui:gap-3">
+                  <div className="ui:flex ui:items-center ui:justify-center ui:size-6 ui:rounded-full ui:bg-indigo-50 ui:[&_svg]:text-indigo-500">
                     <RiCheckFill size={24} />
                   </div>
-                  <div className="text-neutral-500 text-lg">
+                  <div className="ui:text-neutral-500 ui:text-lg">
                     {content}
                   </div>
                 </div>
@@ -49,16 +50,19 @@ function HeroSection({
             }
           </div>
         </div>
-        <div className="flex flex-row flex-wrap gap-4 md:gap-8">
+        <div className="ui:flex ui:flex-row ui:flex-wrap ui:gap-4 ui:md:gap-8">
           {
-            buttons.map((button, index) => <Button key={`button-${index}`} size={"2xl"} className="md:w-[213px] xl:w-[175.5px]" {...button}>See pricing</Button>)
+            buttons.map((button, index) => <Button key={`button-${index}`} size={"2xl"} className="ui:md:w-[213px] ui:xl:w-[175.5px]" {...button}>See pricing</Button>)
           }
         </div>
       </div>
-      <img
+      <Image
+        width={700}
+        height={450}
+        // loading="lazy"
         src={imgUrl}
         alt="Hero section banner"
-        className="col-span-4 md:col-span-6 xl:col-span-7"
+        className="ui:col-span-4 ui:md:col-span-6 ui:xl:col-span-7"
       />
     </section>
   )

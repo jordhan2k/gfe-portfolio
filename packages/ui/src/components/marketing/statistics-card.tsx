@@ -37,11 +37,10 @@ function StatisticsCard({
     requestAnimationFrame(step);
   }, [initialValue, animate, duration]);
   return (
-    <div className='bg-white border border-neutral-200 rounded-lg py-6 shadow-sm flex flex-col items-center gap-4 w-full'>
-      <div className='text-5xl font-bold text-indigo-700'>{formatNumberToGroup(value)}</div>
-      <div className='text-xl font-normal text-neutral-600'>{capitalize(title).replaceAll(/_/g, ' ')}</div>
-    </div>
-  )
+    <div className='ui:bg-white ui:border ui:border-neutral-200 ui:rounded-lg ui:py-6 ui:shadow-sm ui:flex ui:flex-col ui:items-center ui:gap-4 ui:w-full'>
+      <div className='ui:text-5xl ui:font-bold ui:text-indigo-700'>{formatNumberToGroup(value)}</div>
+      <div className='ui:text-xl ui:font-normal ui:text-neutral-600'>{capitalize(title).replaceAll(/_/g, ' ')}</div>
+    </div>)
 }
 
 export { StatisticsCard };

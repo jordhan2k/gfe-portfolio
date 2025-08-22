@@ -59,21 +59,21 @@ function DropdownMenu<T>({
     }
   }
   return (
-    <div ref={dropdownRef} className='w-full relative'>
+    <div ref={dropdownRef} className='ui:w-full ui:relative'>
       <Button
         onClick={() => setVisible(prev => !prev)}
         aria-haspopup="menu"
         aria-expanded={visible}
         disabled={disabled}
-        variant={'secondary'} size={'sm'} className='w-full justify-between'>
+        variant={'secondary'} size={'sm'} className='ui:w-full ui:justify-between'>
         {selectOption ? getItemLabel(selectOption) : placeholder}
-        <RiArrowDownSLine className='size-5' />
+        <RiArrowDownSLine className='ui:size-5' />
       </Button>
       <ul role='menu'
-        className={clsx('absolute transition-all flex flex-col p-2 gap-2 rounded-lg shadow-sm  w-full',
+        className={clsx('ui:absolute ui:transition-all ui:flex ui:flex-col ui:p-2 ui:gap-2 ui:rounded-lg ui:shadow-sm ui:w-full',
           {
-            'translate-y-0 opacity-0 pointer-events-none': !visible,
-            'translate-y-2.5 opacity-100': visible
+            'ui:translate-y-0 ui:opacity-0 ui:pointer-events-none': !visible,
+            'ui:translate-y-2.5 ui:opacity-100': visible
           }
         )}>
         {
@@ -90,19 +90,19 @@ function DropdownMenu<T>({
                 tabIndex={itemDisabled ? undefined : 0}
                 onClick={() => !itemDisabled && handleSelectOption(item)}
                 onKeyDown={(e) => !itemDisabled && handleKeyDownOnOption(e, item)}
-                className={clsx(`w-full
-                  flex p-2 gap-2 rounded-[0.25rem]
-                  [&_svg:not([class*=size-])]:size-5
-                  text-sm font-medium  border border-transparent focus:border-indigo-200 focus:outline-none`,
+                className={clsx(`ui:w-full
+                ui:flex ui:p-2 ui:gap-2 ui:rounded-[0.25rem]
+                ui:[&_svg:not([class*=size-])]:size-5
+                ui:text-sm ui:font-medium ui:border ui:border-transparent ui:focus:border-indigo-200 ui:focus:outline-none`,
                   {
-                    'bg-neutral-50': isActive,
-                    'text-neutral-900 hover:bg-neutral-50 cursor-pointer': !itemDisabled,
-                    'text-neutral-400 cursor-not-allowed': itemDisabled
+                    'ui:bg-neutral-50': isActive,
+                    'ui:text-neutral-900 ui:hover:bg-neutral-50 ui:cursor-pointer': !itemDisabled,
+                    'ui:text-neutral-400 ui:cursor-not-allowed': itemDisabled
                   }
                 )}
               >
                 {icon}
-                <span className='flex-1'>{label}</span>
+                <span className='ui:flex-1'>{label}</span>
                 {isActive ? <RiCheckboxCircleFill /> : null}
               </li>
             )

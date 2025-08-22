@@ -42,3 +42,23 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes scroll-x-sm {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - 78.5px));
+  }
+}
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - 32px));
+  }
+}

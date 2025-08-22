@@ -35,7 +35,7 @@ function Tabs({
   }) {
   return (
     <TabsProvider defaultActiveTab={defaultValue}>
-      <div className={cn('flex flex-col gap-6', className)} {...props} />
+      <div className={cn('ui:flex ui:flex-col ui:gap-6', className)} {...props} />
     </TabsProvider>
   )
 }
@@ -46,43 +46,45 @@ function TabList({
   ...props
 }: React.ComponentProps<'div'>) {
   return (
-    <div role='tablist' aria-label='Tabs' className={cn('flex gap-2', className)} {...props}>
+    <div role='tablist' aria-label='Tabs' className={cn('ui:flex ui:gap-2', className)} {...props}>
       {children}
     </div>
   )
 }
 
 const tabButtonVariants = cva(
-  'border-box text-base font-medium text-neutral-600 disabled:bg-transparent! disabled:text-neutral-400 not-disabled:cursor-pointer',
+  'ui:border-box ui:text-base ui:font-medium ui:text-neutral-600 ui:disabled:bg-transparent! ui:disabled:text-neutral-400 ui:not-disabled:cursor-pointer',
   {
     variants: {
       variant: {
-        button: 'border border-transparent px-4 py-2.5 rounded-[0.25rem] focus-visible:bg-neutral-50 hover:bg-neutral-50  focus-visible:ring-4 focus-visible:ring-indigo-800/20 focus-visible:outline-none',
-        tab: 'relative px-2 pb-3 hover:text-neutral-900 focus-visible:text-neutral-900 after:w-full after:scale-x-0 after:h-[2px] after:absolute after:-bottom-[1px] after:left-0 after:transition-transform'
+        button:
+          'ui:border ui:border-transparent ui:px-4 ui:py-2.5 ui:rounded-[0.25rem] ui:focus-visible:bg-neutral-50 ui:hover:bg-neutral-50 ui:focus-visible:ring-4 ui:focus-visible:ring-indigo-800/20 ui:focus-visible:outline-none',
+        tab: 'ui:relative ui:px-2 ui:pb-3 ui:hover:text-neutral-900 ui:focus-visible:text-neutral-900 ui:after:w-full ui:after:scale-x-0 ui:after:h-[2px] ui:after:absolute ui:after:-bottom-[1px] ui:after:left-0 ui:after:transition-transform',
       },
       active: {
         true: null,
-        false: null
-      }
+        false: null,
+      },
     },
     compoundVariants: [
       {
         variant: 'button',
         active: true,
-        class: 'text-neutral-900 border-neutral-200 shadow-sm',
+        class: 'ui:text-neutral-900 ui:border-neutral-200 ui:shadow-sm',
       },
       {
         variant: 'tab',
         active: true,
-        class: 'after:scale-x-100 text-indigo-700  hover:text-indigo-800 hover:after:bg-indigo-800  after:bg-indigo-700',
+        class: 'ui:after:scale-x-100 ui:text-indigo-700 ui:hover:text-indigo-800 ui:hover:after:bg-indigo-800 ui:after:bg-indigo-700',
       },
     ],
     defaultVariants: {
       variant: 'button',
-      active: false
-    }
+      active: false,
+    },
   }
 )
+
 
 function TabButton({
   className,
@@ -129,7 +131,7 @@ function TabPanel({
       id={`${value}-panel`}
       role="tabpanel"
       hidden={!isActive}
-      className={cn('text-base font-medium text-neutral-900', className)}
+      className={cn('ui:text-base ui:font-medium ui:text-neutral-900', className)}
       {...props}
     >
       {children}

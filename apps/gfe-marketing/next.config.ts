@@ -8,7 +8,10 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [new URL("https://vaqybtnqyonvlwtskzmv.supabase.co/**")],
+    remotePatterns: [
+      new URL("https://vaqybtnqyonvlwtskzmv.supabase.co/**"),
+      new URL("https://jordhan2k.github.io/**"),
+    ],
   },
 };
 

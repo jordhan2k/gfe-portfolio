@@ -1,5 +1,3 @@
-import { NewsletterSection } from '@repo/ui/components/marketing/newsletter-section'
-import React from 'react'
 import { SectionWrapper } from './section-wrapper'
 
 

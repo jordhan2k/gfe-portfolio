@@ -8,31 +8,31 @@ import React, { useMemo } from 'react';
 
 
 const paginationButtonVariants = cva(
-  'px-4 rounded-[0.25rem] h-9 flex items-center text-sm font-medium text-neutral-600 ',
+  'ui:px-4 ui:rounded-[0.25rem] ui:h-9 ui:flex ui:items-center ui:text-sm ui:font-medium ui:text-neutral-600 ',
   {
     variants: {
       variant: {
         index: '',
-        nav: 'gap-2',
+        nav: 'ui:gap-2',
       },
       iconOnly: {
         true: null,
         false: null
       },
       active: {
-        true: 'shadow-sm',
+        true: 'ui:shadow-sm',
         false: ''
       },
       disabled: {
-        true: 'cursor-not-allowed text-neutral-400',
-        false: 'cursor-pointer hover:shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-800/20'
+        true: 'ui:cursor-not-allowed ui:text-neutral-400',
+        false: 'ui:cursor-pointer ui:hover:shadow-sm ui:focus-visible:outline-none ui:focus-visible:ring-4 ui:focus-visible:ring-indigo-800/20'
       }
     },
     compoundVariants: [
       {
         variant: "nav",
         iconOnly: true,
-        class: 'px-2.5 [&_>span]:hidden'
+        class: 'ui:px-2.5 ui:[&_>span]:hidden'
       }
     ],
     defaultVariants: {
@@ -41,6 +41,7 @@ const paginationButtonVariants = cva(
   }
 
 )
+
 
 function PaginationButton({
   className,
@@ -56,7 +57,7 @@ function PaginationButton({
 }
 
 function Ellipsis() {
-  return <div className="h-9 flex items-center px-2">...</div>
+  return <div className="ui:h-9 ui:flex ui:items-center ui:px-2">...</div>
 }
 
 
@@ -121,7 +122,7 @@ function Pagination({
     }
   }
   return (
-    <div className={cn('flex py-3', className)} {...props}>
+    <div className={cn('ui:flex ui:py-3', className)} {...props}>
       <PaginationButton
         variant='nav'
         aria-label='Previous button'

@@ -17,11 +17,11 @@ type PricingCardProps = React.ComponentProps<"div"> & {
 }
 
 const cardVariants = cva(
-  'flex flex-col  border border-neutral-200 rounded-lg gap-8 overflow-hidden',
+  'ui:flex ui:flex-col ui:border ui:border-neutral-200 ui:rounded-lg ui:gap-8 ui:overflow-hidden',
   {
     variants: {
       popular: {
-        true: 'border-indigo-600 shadow-sm',
+        true: 'ui:border-indigo-600 ui:shadow-sm',
         false: ''
       },
     },
@@ -50,41 +50,40 @@ function PricingCard({
   return (
     <div className={cn(
       cardVariants({ popular, className }))}>
-
-      <div hidden={!popular} className='flex justify-center py-4 px-2 bg-indigo-50 text-indigo-700 text-xl font-bold'>Most popular</div>
-      <div className={clsx('flex flex-col flex-1 gap-8 px-4 md:px-8', {
-        'mt-0 pb-4 md:pb-8': popular,
-        'py-4 md:py-8': !popular
+      <div hidden={!popular} className='ui:flex ui:justify-center ui:py-4 ui:px-2 ui:bg-indigo-50 ui:text-indigo-700 ui:text-xl ui:font-bold'>Most popular</div>
+      <div className={clsx('ui:flex ui:flex-col ui:flex-1 ui:gap-8 ui:px-4 ui:md:px-8', {
+        'ui:mt-0 ui:pb-4 ui:md:pb-8': popular,
+        'ui:py-4 ui:md:py-8': !popular
       })}>
         <div>
-          <h6 className='text-neutral-900 text-2xl font-semibold mb-2'>{capitalize(plan)} Plan</h6>
-          <p className='text-neutral-600 text-base font-normal'>
+          <h3 className='ui:text-neutral-900 ui:text-2xl ui:font-semibold ui:mb-2'>{capitalize(plan)} Plan</h3>
+          <p className='ui:text-neutral-600 ui:text-base ui:font-normal'>
             {description}
           </p>
         </div>
 
         <div>
-          <div className='mb-2'>
-            <span className={clsx('text-5xl font-semibold', {
-              'text-indigo-700': popular,
-              'text-neutral-900': !popular
+          <div className='ui:mb-2'>
+            <span className={clsx('ui:text-5xl ui:font-semibold', {
+              'ui:text-indigo-700': popular,
+              'ui:text-neutral-900': !popular
             })}>${price}</span>
-            <span className='text-neutral-900 text-base font-normal'>/ month</span>
+            <span className='ui:text-neutral-900 ui:text-base ui:font-normal'>/ month</span>
 
           </div>
-          <span className='text-neutral-600 text-base font-normal'>Billed {type} {totalPriceString}</span>
+          <span className='ui:text-neutral-600 ui:text-base ui:font-normal'>Billed {type} {totalPriceString}</span>
         </div>
 
-        <ul className='flex flex-col gap-5 flex-1'>
+        <ul className='ui:flex ui:flex-col ui:gap-5 ui:flex-1'>
           {
             features.map((feature) => (
               <li key={feature}>
-                <BulletPoint content={feature} textClassName='text-neutral-600 font-normal text-base' />
+                <BulletPoint content={feature} textClassName='ui:text-neutral-600 ui:font-normal ui:text-base' />
               </li>
             ))
           }
         </ul>
-        <Button {...buttonProps} variant={buttonProps?.variant ? buttonProps?.variant : (popular ? 'primary' : 'secondary')} className={cn('w-full', buttonProps?.className)} />
+        <Button {...buttonProps} variant={buttonProps?.variant ? buttonProps?.variant : (popular ? 'primary' : 'secondary')} className={cn('ui:w-full', buttonProps?.className)} />
 
       </div>
 

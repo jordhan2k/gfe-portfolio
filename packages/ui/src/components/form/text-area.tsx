@@ -22,8 +22,15 @@ function TextArea({
 
   const length = (typeof props.value === 'string' ? props.value : "").length ?? 0;
   return (
-    <div className='w-full flex flex-col gap-1.5'>
-      {label ? <label className='w-full text-sm font-medium text-gray-700' htmlFor={name}>{label}</label> : null}
+    <div className='ui:w-full ui:flex ui:flex-col ui:gap-1.5'>
+      {label ? (
+        <label
+          className='ui:w-full ui:text-sm ui:font-medium ui:text-gray-700'
+          htmlFor={name}
+        >
+          {label}
+        </label>
+      ) : null}
       <textarea
         id={name}
         name={name}
@@ -32,24 +39,30 @@ function TextArea({
         aria-describedby={`${name}-hint`}
         placeholder={placeholder}
         className={cn(
-          `resize-none border text-sm leading-5  font-normal bg-neutral-50
-          border-neutral-200 rounded-[0.25rem] 
-          w-full px-3.5 py-2.5 text-neutral-900 placeholder:text-neutral-500 focus:ring-offset-0 
-          focus:ring-4 focus:ring-indigo-700/12 
-          focus:border-indigo-700 focus:outline-none `,
+          `ui:resize-none ui:border ui:text-sm ui:leading-5 ui:font-normal ui:bg-neutral-50
+      ui:border-neutral-200 ui:rounded-[0.25rem] 
+      ui:w-full ui:px-3.5 ui:py-2.5 ui:text-neutral-900 ui:placeholder:text-neutral-500 ui:focus:ring-offset-0 
+      ui:focus:ring-4 ui:focus:ring-indigo-700/12 
+      ui:focus:border-indigo-700 ui:focus:outline-none`,
           clsx({
-            'border-red-600 focus:ring-red-600/12  focus:border-red-600': error || (length > maxLength),
-            'text-neutral-400 placeholder:text-neutral-400 border-neutral-100': disabled
-          })
-          , className
+            'ui:border-red-600 ui:focus:ring-red-600/12 ui:focus:border-red-600': error || (length > maxLength),
+            'ui:text-neutral-400 ui:placeholder:text-neutral-400 ui:border-neutral-100': disabled,
+          }),
+          className
         )}
         {...props}
       />
-      <div id={`${name}-hint`} className={clsx('text-sm text-gray-500', {
-        'text-red-600': error || (length > maxLength),
-        'text-right': !error
-      })}>{!!error ? error : `${length}/${maxLength}`}</div>
+      <div
+        id={`${name}-hint`}
+        className={clsx('ui:text-sm ui:text-gray-500', {
+          'ui:text-red-600': error || (length > maxLength),
+          'ui:text-right': !error,
+        })}
+      >
+        {!!error ? error : `${length}/${maxLength}`}
+      </div>
     </div>
+
   )
 }
 

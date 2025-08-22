@@ -5,15 +5,15 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react'
 
 const toggleContainerVariants = cva(
-  'relative inline-block',
+  'ui:relative ui:inline-block',
   {
     variants: {
       size: {
-        sm: 'w-9 h-5',
-        md: 'w-11 h-6',
+        sm: 'ui:w-9 ui:h-5',
+        md: 'ui:w-11 ui:h-6',
       },
       disabled: {
-        true: 'pointer-events-none ',
+        true: 'ui:pointer-events-none',
         false: ''
       },
     },
@@ -25,28 +25,28 @@ const toggleContainerVariants = cva(
 )
 
 const toggleVariants = cva(
-  `box-border absolute top-0 right-0 left-0 bottom-0
-  bg-gray-200 border border-gray-200 rounded-full
-  not-disabled:cursor-pointer disabled:cursor-not-allowed
-  before:bg-white before:block before:rounded-full
-  before:transition-all before::absolute before::shadow-sm
-  inline-flex items-center transition-all duration-400 before:duration-400`,
+  `ui:box-border ui:absolute ui:top-0 ui:right-0 ui:left-0 ui:bottom-0
+  ui:bg-gray-200 ui:border ui:border-gray-200 ui:rounded-full
+  ui:not-disabled:cursor-pointer ui:disabled:cursor-not-allowed
+  ui:before:bg-white ui:before:block ui:before:rounded-full
+  ui:before:transition-all ui:before:absolute ui:before:shadow-sm
+  ui:inline-flex ui:items-center ui:transition-all ui:duration-400 ui:before:duration-400`,
   {
     variants: {
       size: {
-        sm: 'before:size-4 px-0.25 peer-checked:before:translate-x-4',
-        md: 'before:size-5 px-0.25 peer-checked:before:translate-x-5',
+        sm: 'ui:before:size-4 ui:px-0.25 ui:peer-checked:before:translate-x-4',
+        md: 'ui:before:size-5 ui:px-0.25 ui:peer-checked:before:translate-x-5',
       },
       disabled: {
-        true: 'bg-gray-100 border-gray-100 before:bg-gray-300 before:shadow-none',
-        false: `peer-checked:bg-indigo-600 peer-checked:border-indigo-600
-        hover:bg-gray-300 hover:border-gray-400 hover:ring-4 hover:ring-gray-400/12
-        hover:peer-checked:bg-indigo-800 hover:peer-checked:border-indigo-600
-        hover:peer-checked:ring-4 hover:peer-checked:ring-indigo-600/12
-        peer-focus:ring-4 peer-focus:ring-gray-400/12 peer-focus:bg-gray-300 peer-focus:border-gray-400
-        peer-checked:peer-focus:bg-indigo-800 peer-checked:peer-focus:border-indigo-600
-        peer-checked:peer-focus:ring-4 peer-checked:peer-focus:peer-checked:ring-indigo-600/12
-        `
+        true: 'ui:bg-gray-100 ui:border-gray-100 ui:before:bg-gray-300 ui:before:shadow-none',
+        false: `ui:peer-checked:bg-indigo-600 ui:peer-checked:border-indigo-600
+                ui:hover:bg-gray-300 ui:hover:border-gray-400 ui:hover:ring-4 ui:hover:ring-gray-400/12
+                ui:hover:peer-checked:bg-indigo-800 ui:hover:peer-checked:border-indigo-600
+                ui:hover:peer-checked:ring-4 ui:hover:peer-checked:ring-indigo-600/12
+                ui:peer-focus:ring-4 ui:peer-focus:ring-gray-400/12 ui:peer-focus:bg-gray-300 ui:peer-focus:border-gray-400
+                ui:peer-checked:peer-focus:bg-indigo-800 ui:peer-checked:peer-focus:border-indigo-600
+                ui:peer-checked:peer-focus:ring-4 ui:peer-checked:peer-focus:peer-checked:ring-indigo-600/12
+                `
       }
     },
     defaultVariants: {
@@ -69,7 +69,7 @@ function Toggle({
         id={name}
         checked={checked}
         type='checkbox'
-        className='sr-only peer'
+        className='ui:sr-only ui:peer'
         {...props}
       />
       <span className={cn(toggleVariants({ size, disabled }))} />
