@@ -18,32 +18,32 @@ function ProfileCard({
 }: ProfileCardProps) {
   return (
     <div
-      className="w-[340px] rounded-lg shadow-sm px-4 py-6 bg-white flex flex-col gap-10"
+      className="ui:w-[340px] ui:rounded-lg ui:shadow-sm ui:px-4 ui:py-6 ui:bg-white ui:flex ui:flex-col ui:gap-10"
     >
-      <div className="flex flex-col gap-6 items-center text-center">
+      <div className="ui:flex ui:flex-col ui:gap-6 ui:items-center ui:text-center">
         <Image
           width={64}
           height={64}
           alt="Sarah Dole's profile picture"
           src={avatar}
-          className="size-16 rounded-full"
+          className="ui:size-16 ui:rounded-full"
           loading="lazy"
         />
-        <div className="flex flex-col gap-1 items-center">
-          <div className="text-xl text-neutral-900">{name}</div>
-          <div className="text-sm text-neutral-600">
+        <div className="ui:flex ui:flex-col ui:gap-1 ui:items-center">
+          <div className="ui:text-xl ui:text-neutral-900">{name}</div>
+          <div className="ui:text-sm ui:text-neutral-600">
             {subtitle}
           </div>
         </div>
-        <p className="text-base font-normal text-neutral-600">
+        <p className="ui:text-base ui:font-normal ui:text-neutral-600">
           {description}
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="ui:flex ui:flex-col ui:gap-6">
         <Button>
           Contact me
         </Button>
-        <div className="flex flex-row gap-4 items-center justify-center">
+        <div className="ui:flex ui:flex-row ui:gap-4 ui:items-center ui:justify-center">
           {
             socialLinks?.map((link, index) => (
               <SocialLink key={`${link.type}-${index}`} {...link} />

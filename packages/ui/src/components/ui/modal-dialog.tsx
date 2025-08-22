@@ -23,26 +23,27 @@ function ModalDialog({
     onOpenChange(false)
   }
   return (
-    <div className={clsx('fixed w-dvw h-dvh flex justify-center items-center',
+    <div className={clsx('ui:fixed ui:w-dvw ui:h-dvh ui:flex ui:justify-center ui:items-center',
       {
-        'pointer-events-none opacity-0': !visible,
+        'ui:pointer-events-none ui:opacity-0': !visible,
       }
     )}>
-      <div onClick={handleClose} className='absolute w-full h-full bg-black/70 backdrop-blur-sm z-1000' />
-      <dialog open={visible} className='max-w-[343px] w-full mx-auto p-6 rounded-lg bg-white z-1001'>
-        <header className='flex gap-2 items-start'>
-          <h2 className='text-lg font-semibold text-neutral-900'>{title}</h2>
+      <div onClick={handleClose} className='ui:absolute ui:w-full ui:h-full ui:bg-black/70 ui:backdrop-blur-sm ui:z-1000' />
+      <dialog open={visible} className='ui:max-w-[343px] ui:w-full ui:mx-auto ui:p-6 ui:rounded-lg ui:bg-white ui:z-1001'>
+        <header className='ui:flex ui:gap-2 ui:items-start'>
+          <h2 className='ui:text-lg ui:font-semibold ui:text-neutral-900'>{title}</h2>
           <Button onClick={handleClose} variant={'link-gray'} size={'2xl'}><RiCloseFill /></Button>
         </header>
-        <div className='mt-2 mb-6 text-sm font-normal text-neutral-600'>
+        <div className='ui:mt-2 ui:mb-6 ui:text-sm ui:font-normal ui:text-neutral-600'>
           {description}
         </div>
-        <footer className='w-full flex gap-3'>
-          {cancelText ? <Button onClick={() => onCancel?.()} variant={'secondary'} size="lg" className='flex-1'>{cancelText}</Button> : null}
-          <Button onClick={onConfirm} variant={variant === 'danger' ? 'destructive' : 'primary'} size="lg" className='flex-1'>{confirmText}</Button>
+        <footer className='ui:w-full ui:flex ui:gap-3'>
+          {cancelText ? <Button onClick={() => onCancel?.()} variant={'secondary'} size="lg" className='ui:flex-1'>{cancelText}</Button> : null}
+          <Button onClick={onConfirm} variant={variant === 'danger' ? 'destructive' : 'primary'} size="lg" className='ui:flex-1'>{confirmText}</Button>
         </footer>
       </dialog>
     </div>
+
   )
 }
 

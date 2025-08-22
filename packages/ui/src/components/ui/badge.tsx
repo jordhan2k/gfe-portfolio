@@ -4,26 +4,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 
 const badgeVariants = cva(
-  'text-sm rounded-full font-normal',
+  'ui:text-sm ui:rounded-full ui:font-normal',
   {
     variants: {
       variant: {
-        neutral: 'text-neutral-600 bg-gray-50 border border-neutral-200',
-        danger: 'text-red-600 bg-red-50 border border-red-200',
-        warning: 'text-amber-700 bg-amber-50 border border-amber-200',
-        success: 'text-green-700 bg-green-50 border border-green-200',
-        brand: 'text-indigo-700 bg-indigo-50 border border-indigo-200',
+        neutral: 'ui:text-neutral-600 ui:bg-gray-50 ui:border ui:border-neutral-200',
+        danger: 'ui:text-red-600 ui:bg-red-50 ui:border ui:border-red-200',
+        warning: 'ui:text-amber-700 ui:bg-amber-50 ui:border ui:border-amber-200',
+        success: 'ui:text-green-700 ui:bg-green-50 ui:border ui:border-green-200',
+        brand: 'ui:text-indigo-700 ui:bg-indigo-50 ui:border ui:border-indigo-200',
       },
       size: {
-        sm: 'px-1.5 py-0.5 text-xs',
-        md: 'px-2 py-0.5',
-        lg: 'px-2.5 py-1'
+        sm: 'ui:px-1.5 ui:py-0.5 ui:text-xs',
+        md: 'ui:px-2 ui:py-0.5',
+        lg: 'ui:px-2.5 ui:py-1'
       }
     },
     defaultVariants: {
       variant: 'neutral',
       size: 'sm'
-
     }
   }
 )

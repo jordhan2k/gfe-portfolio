@@ -4,10 +4,19 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Button } from '../ui/button'
 import clsx from 'clsx'
+import { NavLinkType } from '../marketing/footer-section'
+import { AppLink } from '../ui/link'
 
 const LOGO_URL = "https://vaqybtnqyonvlwtskzmv.supabase.co/storage/v1/object/public/projects-images/navbar-component/starter/img/abstractly.svg"
 
-function NavBar() {
+type NavBarProps = {
+  logo?: string;
+  navLinks: NavLinkType[];
+}
+function NavBar({
+  logo = LOGO_URL,
+  navLinks
+}: NavBarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = (state?: boolean) => {
@@ -15,28 +24,28 @@ function NavBar() {
   }
   return (
     <>
-      <header className='w-full pt-4'>
-        <div className='max-w-[90rem] mx-auto px-4 md:px-8 xl:px-28 flex py-3 min-h-[4.25rem] items-center gap-24 justify-between'>
+      <header className='ui:w-full ui:pt-4'>
+        <div className='ui:max-w-[90rem] ui:mx-auto px-4 ui:md:px-8 ui:xl:px-28 ui:flex ui:py-3 ui:min-h-[4.25rem] ui:items-center ui:gap-24 ui:justify-between'>
           <Image
             width={112}
             height={32}
             alt="Abstractly Logo"
-            src={LOGO_URL}
+            src={logo}
           />
-          <nav className='hidden xl:flex flex-1'>
-            <ul className='flex flex-row gap-8 text-base font-medium text-neutral-600 [&>li]:hover:text-neutral-800 '>
-              <li><a href="/home">Home</a></li>
-              <li><a href="/features">Features</a></li>
-              <li><a href="/pricing">Pricing</a></li>
-              <li><a href="/about">About us</a></li>
-              <li><a href="/contact">Contact</a></li>
+          <nav className='ui:hidden ui:xl:flex ui:flex-1'>
+            <ul className='ui:flex ui:flex-row ui:gap-8 ui:text-base ui:font-medium ui:text-neutral-600 ui:[&>li]:hover:text-neutral-800 '>
+              {
+                navLinks?.map(({ href, label }) => (
+                  <li key={label}><AppLink variant={'gray'} size={'lg'} href={href}>{label}</AppLink></li>
+                ))
+              }
             </ul>
           </nav>
-          <div className='hidden xl:flex gap-4'>
+          <div className='ui:hidden ui:xl:flex ui:gap-4'>
             <Button variant={'secondary'} size={'lg'}>Learn more</Button>
             <Button variant={'primary'} size={'lg'}>See pricing</Button>
           </div>
-          <div className='flex xl:hidden'>
+          <div className='ui:flex ui:xl:hidden'>
             <Button onClick={() => toggleMenu()} aria-label='Open mobile menu' variant={'link-gray'} size={'sm'}><RiMenuLine /></Button>
           </div>
         </div>
@@ -46,10 +55,10 @@ function NavBar() {
       {/* slide-out menu */}
       <div
         aria-hidden={true}
-        className={clsx('/data-[visible=false]:w-0 xl:hidden fixed h-dvh /data-[visible=false]:bg-transparent data-[visible=true]:bg-neutral-500/50 transition-colors top-0 left-0 duration-100',
+        className={clsx('ui:z-1000 ui:backdrop-blur-xs ui:xl:hidden ui:fixed ui:h-dvh /data-[visible=false]:bg-transparent ui:data-[visible=true]:bg-neutral-500/50 ui:transition-colors ui:top-0 ui:left-0 ui:duration-100',
           {
-            "w-0! bg-transparent": !isOpen,
-            "w-dvw bg-neutral-500/50": isOpen
+            "ui:w-0! ui:bg-transparent": !isOpen,
+            "ui:w-dvw ui:bg-neutral-500/50": isOpen
           }
         )}
         onClick={(event) => { event.stopPropagation(); toggleMenu(false) }}
@@ -60,8 +69,8 @@ function NavBar() {
         aria-label="Main menu"
         // aria-expanded={isOpen}
         aria-hidden={!isOpen}
-        className='fixed flex flex-col xl:hidden w-[18.75rem] h-dvh bg-white top-0 left-0 p-4 pt-8 gap-6 justify-between transition-transform -translate-x-[100%] data-[visible=true]:translate-x-0' >
-        <div className='flex items-center justify-between'>
+        className='ui:z-1001 ui:fixed ui:flex ui:flex-col ui:xl:hidden ui:w-[18.75rem] ui:h-dvh ui:bg-white ui:top-0 ui:left-0 ui:p-4 ui:pt-8 ui:gap-6 ui:justify-between ui:transition-transform ui:-translate-x-[100%] ui:data-[visible=true]:translate-x-0' >
+        <div className='ui:flex ui:items-center ui:justify-between'>
           <Image
             width={112}
             height={32}
@@ -70,16 +79,16 @@ function NavBar() {
           />
           <Button onClick={() => toggleMenu(false)} aria-label='Open mobile menu' variant={'link-gray'} size={'sm'}><RiCloseLine /></Button>
         </div>
-        <nav className='flex flex-1'>
-          <ul className='flex flex-col gap-2 text-base font-medium text-neutral-600 [&>li]:hover:text-neutral-800 [&>li]:px-3 [&>li]:py-2'>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/features">Features</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/about">About us</a></li>
-            <li><a href="/contact">Contact</a></li>
+        <nav className='ui:flex ui:flex-1'>
+          <ul className='ui:flex ui:flex-col ui:gap-2 ui:text-base ui:font-medium ui:text-neutral-600 ui:[&>li]:hover:text-neutral-800 ui:[&>li]:px-3 ui:[&>li]:py-2'>
+            {
+              navLinks?.map(({ href, label }) => (
+                <li key={label}><AppLink variant={'gray'} size={'lg'} href={href}>{label}</AppLink></li>
+              ))
+            }
           </ul>
         </nav>
-        <div className='flex flex-col gap-4'>
+        <div className='ui:flex ui:flex-col ui:gap-4'>
           <Button variant={'secondary'} size={'lg'}>Learn more</Button>
           <Button variant={'primary'} size={'lg'}>See pricing</Button>
         </div>

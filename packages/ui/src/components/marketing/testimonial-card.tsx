@@ -18,26 +18,25 @@ function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <div
-      className={cn("mx-auto bg-white w-[340px] p-6 shadow-sm rounded-lg flex flex-col gap-4", className)}
-    // {...props}
+      className={cn("ui:mx-auto ui:bg-white ui:w-[340px] ui:p-6 ui:shadow-sm ui:rounded-lg ui:flex ui:flex-col ui:gap-4", className)}
     >
-      <div className="flex w-full flex-row gap-4">
+      <div className="ui:flex ui:w-full ui:flex-row ui:gap-4">
         <Image
           alt={`${name}'s profile thumbnail`}
           src={avatarUrl}
           height="48"
           width="48"
           loading="lazy"
-          className="size-12 rounded-full"
+          className="ui:size-12 ui:rounded-full"
         />
         <div>
-          <div className="text-lg text-neutral-900 font-semibold">{name}</div>
-          <div className="text-sm text-neutral-600">{username}</div>
+          <div className="ui:text-lg ui:text-neutral-900 ui:font-semibold">{name}</div>
+          <div className="ui:text-sm ui:text-neutral-600">{username}</div>
         </div>
       </div>
 
       <blockquote>
-        <p className="text-neutral-600 text-base line-clamp-5 text-ellipsis">
+        <p className="ui:text-neutral-600 ui:text-base ui:line-clamp-5 ui:text-ellipsis">
           {description}
         </p>
       </blockquote>
@@ -45,4 +44,4 @@ function TestimonialCard({
   )
 }
 
-export { TestimonialCard }
+export { TestimonialCard, type TestimonialCardProps }

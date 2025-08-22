@@ -17,29 +17,32 @@ function BlogCard({
   onReadMoreClick
 }: BlogCardProps) {
   return (
-    <div className="w-[340px] bg-white rounded-lg overflow-hidden shadow-sm">
+    <div className="ui:w-[340px] ui:bg-white ui:rounded-lg ui:overflow-hidden ui:shadow-sm">
       <Image
-        className="h-[288px] w-full object-cover block"
+        className="ui:h-[288px] ui:w-full ui:object-cover ui:block"
         height={288}
         width={340}
         alt="Blog card image"
         loading="lazy"
         src={imgUrl}
       />
-      <div className="px-6 py-4 flex flex-col items-start">
-        <Badge variant="success" size="md"  {...badgeProps} />
+      <div className="ui:px-6 ui:py-4 ui:flex ui:flex-col ui:items-start">
+        <Badge variant="success" size="md" {...badgeProps} />
 
-        <div className="mt-2">
-          <div className="text-lg font-semibold mb-3 text-neutral-900">
+        <div className="ui:mt-2">
+          <div className="ui:text-lg ui:font-semibold ui:mb-3 ui:text-neutral-900">
             {title}
           </div>
-          <p className="text-base font-normal mb-6 text-neutral-600">
+          <p className="ui:text-base ui:font-normal ui:mb-6 ui:text-neutral-600">
             {description}
           </p>
-          <Button onClick={onReadMoreClick} variant={'link-color'}>Read more <RiArrowRightLine /></Button>
+          <Button onClick={onReadMoreClick} variant="link-color">
+            Read more <RiArrowRightLine />
+          </Button>
         </div>
       </div>
     </div>
+
   )
 }
 

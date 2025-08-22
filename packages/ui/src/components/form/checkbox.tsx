@@ -24,26 +24,26 @@ function Checkbox({
   }, [indeterminate]);
   return (
     <div>
-      <input ref={inputRef} name={name} id={name} type='checkbox' className='sr-only peer' disabled={disabled} {...props} />
-      <label htmlFor={name} className={clsx(`flex items-center justify-center gap-3 cursor-pointer w-fit
-        peer-focus:[&_>div]:outline-none peer-focus:[&_>div]:ring-3 text-neutral-600
-        peer-focus:[&_>div]:ring-indigo-800/12 peer-focus:[&_>div]:border-indigo-600
-        peer-checked:[&_>div]:bg-indigo-600 peer-checked:[&_>div]:border-indigo-600
-        peer-checked:[&_>div_>_svg]:block
+      <input ref={inputRef} name={name} id={name} type='checkbox' className='ui:sr-only ui:peer' disabled={disabled} {...props} />
+      <label htmlFor={name} className={clsx(`ui:flex ui:items-center ui:justify-center ui:gap-3 ui:cursor-pointer ui:w-fit
+      ui:peer-focus:[&_>div]:outline-none ui:peer-focus:[&_>div]:ring-3 ui:text-neutral-600
+      ui:peer-focus:[&_>div]:ring-indigo-800/12 ui:peer-focus:[&_>div]:border-indigo-600
+      ui:peer-checked:[&_>div]:bg-indigo-600 ui:peer-checked:[&_>div]:border-indigo-600
+      ui:peer-checked:[&_>div_>_svg]:block
 
-        peer-indeterminate:[&_>div]:bg-indigo-600 peer-indeterminate:[&_>div]:border-indigo-600
-        peer-indeterminate:[&_>div_>div]:block peer-checked:[&_>div_>div]:hidden
+      ui:peer-indeterminate:[&_>div]:bg-indigo-600 ui:peer-indeterminate:[&_>div]:border-indigo-600
+      ui:peer-indeterminate:[&_>div_>div]:block ui:peer-checked:[&_>div_>div]:hidden
 
-        peer-disabled:cursor-not-allowed peer-disabled:text-neutral-400!
-        peer-disabled:[&_>div]:bg-neutral-200 peer-disabled:peer-checked:[&_>div]:border-neutral-200
-        peer-disabled:peer-indeterminate:[&_>div]:border-neutral-200
+      ui:peer-disabled:cursor-not-allowed ui:peer-disabled:text-neutral-400!
+      ui:peer-disabled:[&_>div]:bg-neutral-200 ui:peer-disabled:peer-checked:[&_>div]:border-neutral-200
+      ui:peer-disabled:peer-indeterminate:[&_>div]:border-neutral-200
         `,
       )}>
-        <div className='size-4 rounded-[0.25rem] border border-neutral-300 m-1 flex items-center justify-center'>
-          <IconCheck className='hidden' />
-          <div className='w-2.5 h-0.5 bg-white rounded-full hidden' />
+        <div className='ui:size-4 ui:rounded-[0.25rem] ui:border ui:border-neutral-300 ui:m-1 ui:flex ui:items-center ui:justify-center'>
+          <IconCheck className='ui:hidden' />
+          <div className='ui:w-2.5 ui:h-0.5 ui:bg-white ui:rounded-full ui:hidden' />
         </div>
-        <span className='text-base font-normal'>{label}</span>
+        <span className='ui:text-base ui:font-normal'>{label}</span>
       </label>
     </div>
   )

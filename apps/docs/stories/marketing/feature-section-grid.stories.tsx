@@ -19,8 +19,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    imgUrl: "https://jordhan2k.github.io/gfe-p06-feature-section-side-image/img/unsplash:rAtzDB6hWrU.jpg",
-    side: 'right',
     supportingText: "Premium abstract images",
     title: "Easy access to top quality images",
     description: "In a world where storytelling constantly evolves, we lead with groundbreaking images designed for your presentation excellence.",

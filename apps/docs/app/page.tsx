@@ -1,4 +1,3 @@
-import { BlogCard } from "@repo/ui/src/components/marketing/blog-card";
 
 
 export default function Page() {

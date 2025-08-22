@@ -21,8 +21,13 @@ function SocialLink({
 }: SocialLinkProps) {
   const Icon = iconMap[type]
   return (
-    <a className={cn("size-9 flex items-center justify-center [&_svg]:text-indigo-700 [&_svg]:size-5 rounded-[0.25rem] hover:bg-neutral-50 focus:bg-neutral-50 focus:outline-none focus:ring-4 focus:ring-indigo-800/20",
-      className)} {...props}>
+    <a
+      className={cn(
+        "ui:size-9 ui:flex ui:items-center ui:justify-center ui:[&_svg]:text-indigo-700 ui:[&_svg]:size-5 ui:rounded-[0.25rem] ui:hover:bg-neutral-50 ui:focus:bg-neutral-50 ui:focus:outline-none ui:focus:ring-4 ui:focus:ring-indigo-800/20",
+        className
+      )}
+      {...props}
+    >
       <Icon />
     </a>
   )

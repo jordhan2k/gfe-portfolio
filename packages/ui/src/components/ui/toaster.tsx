@@ -6,10 +6,14 @@ import Toast from './toast'
 function Toaster() {
   const { toasts } = useToast();
   return (
-    <div className='fixed left-0 right-0 top-0 p-4 flex flex-col items-end gap-4 w-full'>
-      {
-        toasts.map((item) => <Toast key={`toast-${item.id}`} variant={item.variant} message={item.message} />)
-      }
+    <div className='ui:fixed ui:left-0 ui:right-0 ui:top-0 ui:p-4 ui:flex ui:flex-col ui:items-end ui:gap-4 ui:w-full'>
+      {toasts.map((item) => (
+        <Toast
+          key={`toast-${item.id}`}
+          variant={item.variant}
+          message={item.message}
+        />
+      ))}
     </div>
   )
 }

@@ -34,12 +34,12 @@ function TextInput({
   const [localType, setLocalType] = React.useState(type);
 
   return (
-    <div className={cn('w-full flex flex-col gap-1.5', containerClassname)}>
-      {label ? <label className='w-full text-sm font-medium text-gray-700' htmlFor={name}>{label}</label> : null}
-      <div className={clsx('w-full flex relative items-center', {
+    <div className={cn('ui:w-full ui:flex ui:flex-col ui:gap-1.5', containerClassname)}>
+      {label ? <label className='ui:w-full ui:text-sm ui:font-medium ui:text-gray-700' htmlFor={name}>{label}</label> : null}
+      <div className={clsx('ui:w-full ui:flex ui:relative ui:items-center', {
         '[&_svg]:text-red-600': error
       })}>
-        <div className={`absolute left-3.5 flex text-gray-400 [&_svg:not([class*=size-])]:size-5 pointer-events-none`}>
+        <div className={`ui:absolute ui:left-3.5 ui:flex ui:text-gray-400 [&_svg:not([class*=size-])]:ui:size-5 ui:pointer-events-none`}>
           {leadingIcon}
         </div>
         <input
@@ -49,16 +49,16 @@ function TextInput({
           name={name}
           disabled={disabled}
           className={cn(
-            `h-10 border text-sm leading-5  font-normal bg-neutral-50
-            border-neutral-200 rounded-[0.25rem] 
-            w-full px-3.5 text-neutral-900 placeholder:text-neutral-500 focus:ring-offset-0 
-            focus:ring-4 focus:ring-indigo-700/12 
-            focus:border-indigo-700 focus:outline-none`,
+            `ui:h-10 ui:border ui:text-sm ui:leading-5  ui:font-normal ui:bg-neutral-50
+            ui:border-neutral-200 ui:rounded-[0.25rem] 
+            ui:w-full ui:px-3.5 ui:text-neutral-900 ui:placeholder:text-neutral-500 ui:focus:ring-offset-0 
+            ui:focus:ring-4 ui:focus:ring-indigo-700/12 
+            ui:focus:border-indigo-700 ui:focus:outline-none`,
             clsx({
-              'pl-10.5': leadingIcon,
-              'pr-9.5': helpIcon || type === 'password',
-              'focus:ring-red-600/12  focus:border-red-600': error,
-              'text-neutral-400 placeholder:text-neutral-400 border-neutral-100': disabled
+              'ui:pl-10.5': leadingIcon,
+              'ui:pr-9.5': helpIcon || type === 'password',
+              'ui:focus:ring-red-600/12  ui:focus:border-red-600': error,
+              'ui:text-neutral-400 ui:placeholder:text-neutral-400 ui:border-neutral-100': disabled
             })
             , className
           )}
@@ -69,13 +69,13 @@ function TextInput({
           <Button onClick={() => setLocalType(localType === 'password' ? 'text' : 'password')} variant={'link-gray'} className='z-1 absolute right-3.5 flex items-center text-gray-400 [&_svg]:size-4!'>
             {localType === 'password' ? <RiEyeCloseLine /> : <RiEyeLine />}
           </Button>
-          : (helpIcon ? <div className={`absolute text-gray-400 right-3.5 [&_svg:not([class*=size-])]:size-4`}>
+          : (helpIcon ? <div className={`ui:absolute ui:text-gray-400 ui:right-3.5 ui:[&_svg:not([class*=size-])]:size-4`}>
             <RiQuestionLine />
           </div> : null)}
       </div>
       {
-        (hintText || error) ? <div id={`${name}-hint`} className={clsx('text-sm text-gray-500', {
-          'text-red-600': error
+        (hintText || error) ? <div id={`${name}-hint`} className={clsx('ui:text-sm ui:text-gray-500', {
+          'ui:text-red-600': error
         })}>
           {!!error ? error : hintText}
         </div> : null

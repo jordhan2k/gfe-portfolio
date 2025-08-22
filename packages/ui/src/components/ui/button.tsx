@@ -5,23 +5,23 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import React from 'react'
 
 const buttonVariants = cva(
-  `justify-center inline-flex items-center font-medium rounded-[0.25rem] shadow-sm not-disabled:cursor-pointer disabled:cursor-not-allowed focus:outline-none focus:ring-4  [&_svg:not([class*='size-'])]:size-5`,
+  `ui:justify-center ui:inline-flex ui:items-center ui:font-medium ui:rounded-[0.25rem] ui:shadow-sm ui:not-disabled:cursor-pointer ui:disabled:cursor-not-allowed ui:focus:outline-none ui:focus:ring-4 ui:[&_svg:not([class*='size-'])]:size-5`,
   {
     variants: {
       variant: {
-        primary: "bg-indigo-700 text-white hover:bg-indigo-800 focus:bg-indigo-800 focus:ring-indigo-800/20 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:shadow-none!",
-        secondary: "bg-white border border-neutral-200 text-neutral-950 hover:text-neutral-950 hover:bg-neutral-50 focus:bg-neutral-50 focus:shadow-none! focus:ring-indigo-800/20 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:shadow-none! disabled:border-none",
-        tertiary: "shadow-none! text-indigo-700 hover:bg-neutral-50 focus:bg-neutral-50  focus:ring-indigo-800/20 disabled:text-neutral-400 disabled:bg-transparent!",
-        "link-color": "shadow-none! p-0! text-indigo-700 hover:text-indigo-800 focus:text-indigo-800 focus:bg-neutral-50 focus:ring-indigo-800/20 disabled:text-neutral-400",
-        "link-gray": "shadow-none p-0! text-neutral-600 hover:text-neutral-900 focus:text-neutral-900 focus:bg-neutral-50 focus:ring-indigo-800/20 disabled:text-neutral-400",
-        "destructive": "bg-red-600 text-white hover:bg-red-700 focus:bg-red-700  focus:ring-red-800/20 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:shadow-none!",
+        primary: "ui:bg-indigo-700 ui:text-white ui:hover:bg-indigo-800 ui:focus:bg-indigo-800 ui:focus:ring-indigo-800/20 ui:disabled:bg-neutral-100 ui:disabled:text-neutral-400 ui:disabled:shadow-none!",
+        secondary: "ui:bg-white ui:border ui:border-neutral-200 ui:text-neutral-950 ui:hover:text-neutral-950 ui:hover:bg-neutral-50 ui:focus:bg-neutral-50 ui:focus:shadow-none! ui:focus:ring-indigo-800/20 ui:disabled:bg-neutral-100 ui:disabled:text-neutral-400 ui:disabled:shadow-none! ui:disabled:border-none",
+        tertiary: "ui:shadow-none! ui:text-indigo-700 ui:hover:bg-neutral-50 ui:focus:bg-neutral-50 ui:focus:ring-indigo-800/20 ui:disabled:text-neutral-400 ui:disabled:bg-transparent!",
+        "link-color": "ui:shadow-none! ui:p-0! ui:text-indigo-700 ui:hover:text-indigo-800 ui:focus:text-indigo-800 ui:focus:bg-neutral-50 ui:focus:ring-indigo-800/20 ui:disabled:text-neutral-400",
+        "link-gray": "ui:shadow-none ui:p-0! ui:text-neutral-600 ui:hover:text-neutral-900 ui:focus:text-neutral-900 ui:focus:bg-neutral-50 ui:focus:ring-indigo-800/20 ui:disabled:text-neutral-400",
+        "destructive": "ui:bg-red-600 ui:text-white ui:hover:bg-red-700 ui:focus:bg-red-700 ui:focus:ring-red-800/20 ui:disabled:bg-neutral-100 ui:disabled:text-neutral-400 ui:disabled:shadow-none!",
       },
       size: {
-        sm: "px-3 py-2 text-sm gap-1.5 has-[>svg:nth-of-type(1):last-of-type]:px-2",
-        md: "px-3.5 py-2.5 text-sm gap-1.5 has-[>svg:nth-of-type(1):last-of-type]:px-2.5 ",
-        lg: "px-4 py-2.5 text-base gap-2 has-[>svg:nth-of-type(1):last-of-type]:px-2.5",
-        xl: "px-5 py-3 text-base gap-2 has-[>svg:nth-of-type(1):last-of-type]:px-3",
-        "2xl": "px-6 py-4 text-lg gap-3 has-[>svg:nth-of-type(1):last-of-type]:px-4  [&_svg:not([class*='size-'])]:size-6"
+        sm: "ui:px-3 ui:py-2 ui:text-sm ui:gap-1.5 ui:has-[>svg:nth-of-type(1):last-of-type]:px-2",
+        md: "ui:px-3.5 ui:py-2.5 ui:text-sm ui:gap-1.5 ui:has-[>svg:nth-of-type(1):last-of-type]:px-2.5",
+        lg: "ui:px-4 ui:py-2.5 ui:text-base ui:gap-2 ui:has-[>svg:nth-of-type(1):last-of-type]:px-2.5",
+        xl: "ui:px-5 ui:py-3 ui:text-base ui:gap-2 ui:has-[>svg:nth-of-type(1):last-of-type]:px-3",
+        "2xl": "ui:px-6 ui:py-4 ui:text-lg ui:gap-3 ui:has-[>svg:nth-of-type(1):last-of-type]:px-4 ui:[&_svg:not([class*='size-'])]:size-6"
       }
     },
     defaultVariants: {
@@ -29,6 +29,7 @@ const buttonVariants = cva(
       size: 'md'
     }
   })
+
 
 type ButtonProps = React.ComponentProps<"button">
   & VariantProps<typeof buttonVariants>
