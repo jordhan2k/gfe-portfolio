@@ -4,6 +4,11 @@ import { CONTACT_DESC, CONTACT_ITEMS, CONTACT_TITLE, TEAM_DESCRIPTION, TEAM_MEMB
 import { StatisticsSection } from '@repo/ui/src/components/marketing/statistics-section'
 import { TeamSection } from '@repo/ui/src/components/marketing/team-section';
 import React from 'react'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us'
+}
 
 export default async function AboutUsPage() {
 

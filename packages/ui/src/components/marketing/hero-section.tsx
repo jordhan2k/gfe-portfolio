@@ -52,7 +52,7 @@ function HeroSection({
         </div>
         <div className="ui:flex ui:flex-row ui:flex-wrap ui:gap-4 ui:md:gap-8">
           {
-            buttons.map((button, index) => <Button key={`button-${index}`} size={"2xl"} className="ui:md:w-[213px] ui:xl:w-[175.5px]" {...button}>See pricing</Button>)
+            buttons.map((button, index) => <Button key={`button-${index}`} size={"2xl"} className="ui:md:w-[213px] ui:xl:w-[175.5px]" {...button}></Button>)
           }
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function Layout({
   return (
     <>
       <Header />
-      <main className='max-w-[90rem] w-auto mx-auto p-4'>
+      <main className='max-w-[90rem] w-auto mx-auto p-4 pt-[7rem]'>
         <div className='w-full bg-white shadow-md rounded-md'>
           {children}
           <Footer />
