@@ -1,7 +1,7 @@
 'use client'
 import { RiCloseLine, RiMenuLine } from '@remixicon/react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 import clsx from 'clsx'
 import { NavLinkType } from '../marketing/footer-section'
@@ -18,13 +18,27 @@ function NavBar({
   navLinks
 }: NavBarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = (state?: boolean) => {
     setIsOpen(prev => state !== undefined ? state : !prev);
   }
+
+  const handleScrollEvent = (e: Event) => {
+    setScrolled(document.documentElement.scrollTop > 16);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScrollEvent)
+    return () => {
+      window.removeEventListener('scroll', handleScrollEvent)
+    }
+  }, [])
   return (
     <>
-      <header className='ui:w-full ui:pt-4'>
+      <header className={clsx('ui:w-full ui:pt-4 ui:fixed ui:z-1000', {
+        'ui:bg-white ui:transition-colors ui:shadow-sm': scrolled
+      })}>
         <div className='ui:max-w-[90rem] ui:mx-auto px-4 ui:md:px-8 ui:xl:px-28 ui:flex ui:py-3 ui:min-h-[4.25rem] ui:items-center ui:gap-24 ui:justify-between'>
           <Image
             width={112}

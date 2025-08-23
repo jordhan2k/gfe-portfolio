@@ -4,8 +4,11 @@ import { FaqSection } from '@repo/ui/src/components/marketing/fag-section'
 import { FeatureSectionGrid } from '@repo/ui/src/components/marketing/feature-section-grid'
 import { PricingSectionTiers } from '@repo/ui/src/components/marketing/pricing-section-tiers'
 import { TestimonialsSection } from '@repo/ui/src/components/marketing/testimonials-section'
+import { Metadata } from 'next'
 
-
+export const metadata: Metadata = {
+  title: 'Pricing'
+}
 
 export default function PricingPage() {
   return (

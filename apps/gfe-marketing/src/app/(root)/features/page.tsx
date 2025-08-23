@@ -5,6 +5,11 @@ import { FaqSection } from '@repo/ui/src/components/marketing/fag-section'
 import { FeatureSectionGrid } from '@repo/ui/src/components/marketing/feature-section-grid'
 import { FeatureSectionSideImage } from '@repo/ui/src/components/marketing/feature-section-side-image'
 import { TestimonialsSection } from '@repo/ui/src/components/marketing/testimonials-section'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Features'
+}
 
 export default function FeaturesPage() {
   return (

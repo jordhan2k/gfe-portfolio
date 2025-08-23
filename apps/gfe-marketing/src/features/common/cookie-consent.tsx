@@ -104,7 +104,7 @@ function CookieConsent() {
         </div>
       </div>
 
-      <div className={clsx('fixed top-0 w-dvw h-dvh flex justify-center items-center',
+      <div className={clsx('fixed top-0 w-dvw h-dvh flex justify-center items-center z-1002',
         {
           'pointer-events-none opacity-0': !modalVisible,
         }
