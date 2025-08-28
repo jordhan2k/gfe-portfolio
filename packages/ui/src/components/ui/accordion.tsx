@@ -8,7 +8,7 @@ function Accordion({
   title,
 }: {
   title: string;
-  content: string;
+  content: string | React.ReactNode;
 }) {
   const [open, setOpen] = useState(true);
   const id = useId();
@@ -26,9 +26,9 @@ function Accordion({
           : <RiAddCircleLine />}
       </button>
       <div hidden={!open} id={`accordion-panel-${id}`}>
-        <p className='ui:pr-10 ui:text-base ui:font-normal ui:text-neutral-600'>
+        <div className='ui:pr-10 ui:text-base ui:font-normal ui:text-neutral-600'>
           {content}
-        </p>
+        </div>
       </div>
     </div>
   )

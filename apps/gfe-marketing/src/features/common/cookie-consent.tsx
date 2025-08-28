@@ -53,16 +53,11 @@ function CookieConsent() {
 
 
   const handleCloseConsent = () => {
-    console.log('ad du')
     setModalVisible(false);
     setShow(false);
   }
 
-  console.log({ modalVisible })
-
   const handleManageCookies = () => {
-    console.log('len')
-
     setModalVisible(true);
   }
 
