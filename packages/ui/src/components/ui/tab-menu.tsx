@@ -59,7 +59,7 @@ const tabButtonVariants = cva(
       variant: {
         button:
           'ui:border ui:border-transparent ui:px-4 ui:py-2.5 ui:rounded-[0.25rem] ui:focus-visible:bg-neutral-50 ui:hover:bg-neutral-50 ui:focus-visible:ring-4 ui:focus-visible:ring-indigo-800/20 ui:focus-visible:outline-none',
-        tab: 'ui:relative ui:px-2 ui:pb-3 ui:hover:text-neutral-900 ui:focus-visible:text-neutral-900 ui:after:w-full ui:after:scale-x-0 ui:after:h-[2px] ui:after:absolute ui:after:-bottom-[1px] ui:after:left-0 ui:after:transition-transform',
+        tab: 'ui:relative ui:px-2 ui:pb-3 ui:hover:text-neutral-900 ui:focus-visible:text-neutral-900 ui:after:w-full ui:after:z-1 ui:after:scale-x-0 ui:after:h-[2px] ui:after:absolute ui:after:-bottom-[1px] ui:after:left-0 ui:after:transition-transform',
       },
       active: {
         true: null,

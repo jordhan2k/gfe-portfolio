@@ -1,6 +1,6 @@
-import { ProductImages } from '@/features/product-detail/components/product-images';
-import { ProductMeta } from '@/features/product-detail/components/product-meta';
 import { ProductDetailContextProvider } from '@/features/product-detail/context';
+import { ProductDetail } from '@/features/product-detail/product-detail';
+import ProductSpecification from '@/features/product-specification/product-specification';
 import { IProduct } from '@/types';
 import { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -31,10 +31,10 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const result = await fetch('https://www.greatfrontend.com/api/projects/challenges/e-commerce/products').then((res) => res.json())
+  const result = await fetch('https://www.greatfrontend.com/api/projects/challenges/e-commerce/products?per_page=100').then((res) => res.json())
 
   return result.data.map((product: IProduct) => ({
-    slug: product.product_id,
+    id: product.product_id,
   }))
 }
 
@@ -47,15 +47,18 @@ export default async function ProductDetailPage(props: Props) {
     return notFound();
   }
   return (
-    <div className='px-4 py-12 xl:p-24 grid grid-cols-4 md:grid-cols-6 xl:grid-cols-12 gap-x-4 md:gap-x-8 gap-y-12'>
-      <ProductDetailContextProvider initialProduct={product}>
+    <ProductDetailContextProvider initialProduct={product}>
+      <ProductDetail />
+      <ProductSpecification />
+      {/* <div className='px-4 py-12 xl:p-24 grid grid-cols-4 md:grid-cols-6 xl:grid-cols-12 gap-x-4 md:gap-x-8 gap-y-12'>
         <div className='col-span-4 md:col-span-6'>
           <ProductImages />
         </div>
         <div className='col-span-4 md:col-span-6'>
           <ProductMeta />
         </div>
-      </ProductDetailContextProvider>
-    </div>
+      </div> */}
+    </ProductDetailContextProvider>
+
   )
 }

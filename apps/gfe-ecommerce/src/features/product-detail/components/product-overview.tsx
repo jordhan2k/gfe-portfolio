@@ -13,6 +13,7 @@ function ProductOverview() {
   if (!product) return null;
   const { name,
     description,
+    product_id,
     // info,
     rating,
     reviews } = product!;
@@ -40,7 +41,7 @@ function ProductOverview() {
           <RatingStars rating={roundedRating} />
           {
             reviews > 0
-              ? <AppLink href={'#review'} >See all {reviews} {reviews > 1 ? 'reviews' : 'review'}</AppLink>
+              ? <AppLink href={`/products/${product_id}/reviews`} scroll={false}>See all {reviews} {reviews > 1 ? 'reviews' : 'review'}</AppLink>
               : <>
                 <div className='text-sm font-normal text-neutral-900'>No review yet.</div>
                 <AppLink href={'#review'} >Be the first</AppLink>

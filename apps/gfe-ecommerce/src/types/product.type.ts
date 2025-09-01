@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination.type";
+
 export type AvailableColorType = {
   color: string;
   disabled?: boolean;
@@ -65,4 +67,9 @@ export interface IProduct {
   reviews: number;
   sizes: string[];
   sold: number;
+}
+
+export interface IGetProductListData {
+  data: IProduct[];
+  pagination: IPagination;
 }
