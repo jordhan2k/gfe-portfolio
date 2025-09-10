@@ -11,9 +11,11 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
     "@remixicon/react": "^4.6.0",
     "@repo/ui": "*",
     "@tanstack/react-query": "^5.85.5",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.17",
     "lodash": "^4.17.21",
@@ -21,7 +23,10 @@
     "nuqs": "^2.5.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "usehooks-ts": "^3.1.1"
+    "react-hook-form": "^7.62.0",
+    "tailwind-merge": "^3.3.1",
+    "usehooks-ts": "^3.1.1",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.4.2",

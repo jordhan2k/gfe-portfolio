@@ -1,17 +1,16 @@
 'use client'
 
 import { useProductReviews, useSelectedRating } from '@/hooks/use-product-reviews';
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import isEqual from 'lodash/isEqual';
-import { IRatingOverview } from '@/types';
-import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { RatingStars } from '@/components/ui/rating-stars';
+import { RATING_RANKS } from '@/config';
+import { IRatingOverview } from '@/types';
+import { Button } from '@repo/ui/src/components/ui/button';
 import { useQueryClient } from '@tanstack/react-query';
 import clsx from 'clsx';
-import { Button } from '@repo/ui/src/components/ui/button';
-import { useQueryState } from 'nuqs';
-import { RATING_RANKS } from '@/config';
+import isEqual from 'lodash/isEqual';
+import { useParams } from 'next/navigation';
 
 
 function OverallRating() {
@@ -102,4 +101,4 @@ function OverallRating() {
   )
 }
 
-export { OverallRating }
+export { OverallRating };

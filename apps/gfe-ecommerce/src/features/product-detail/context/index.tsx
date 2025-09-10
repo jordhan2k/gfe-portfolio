@@ -151,14 +151,11 @@ const ProductDetailContextProvider = ({
       const calcData = calculateAvailability(product, null, null);
       return {
         product: initialProduct,
-        // quantity: 0,
         ...calcData
       };
     }
   );
 
-  // const render = useRef(0);
-  // console.log('all context', render.current++)
 
   const actions = useMemo(() => {
     const onSelectColor = (color: string) => {

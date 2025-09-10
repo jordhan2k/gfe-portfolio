@@ -1,10 +1,18 @@
 import {
+  CATEGORY_OPTIONS,
+  COLLECTIONS_OPTIONS,
+  COLORS_OPTIONS,
+  RATING_OPTIONS,
+} from "@/config";
+import {
   AvailableColorType,
   AvailableSizeType,
   IInventoryItem,
   IProduct,
   IProductImage,
+  IProductListingSearchParams,
 } from "@/types";
+import isArray from "lodash/isArray";
 
 export const calculateAvailability = (
   product: IProduct | null,
@@ -66,4 +74,53 @@ export const calculateAvailability = (
     previewImage,
     quantity,
   };
+};
+
+export const getListingQueryString = (
+  searchParams?: IProductListingSearchParams
+): string => {
+  const filters = [
+    COLORS_OPTIONS,
+    COLLECTIONS_OPTIONS,
+    CATEGORY_OPTIONS,
+    RATING_OPTIONS,
+  ];
+  if (!searchParams) return "";
+  const { page, sort, direction } = searchParams;
+  let queryString = filters
+    .map((filter) => {
+      const values = searchParams?.[filter.key as keyof typeof searchParams];
+      return Array.from(
+        new Set(
+          isArray(values)
+            ? values.join(",").split(",").filter(Boolean)
+            : values?.split(",").filter(Boolean)
+        )
+      )
+        .map((item: string) => `${filter.key}=${item}`)
+        .join("&");
+    })
+    .filter(Boolean)
+    .join("&");
+
+  // console.log("chưa join", queryString);
+  //   ...Array.from(color).map(
+  //     (color) => `${COLORS_OPTIONS.key}=${encodeURIComponent(color)}`
+  //   ),
+  //   ...Array.from(collection).map(
+  //     (collection) =>
+  //       `${COLLECTIONS_OPTIONS.key}=${encodeURIComponent(collection)}`
+  //   ),
+  //   ...Array.from(rating).map(
+  //     (rating) => `${RATING_OPTIONS.key}=${encodeURIComponent(rating)}`
+  //   ),
+  //   ...Array.from(category).map(
+  //     (category) => `${CATEGORY_OPTIONS.key}=${encodeURIComponent(category)}`
+  //   ),
+  // ].join("&");
+  // }
+  queryString = `${queryString ? `${queryString}&` : ""}sort=${
+    sort ?? "created"
+  }&direction=${direction ?? "desc"}&page=${page ?? 1}`;
+  return queryString;
 };

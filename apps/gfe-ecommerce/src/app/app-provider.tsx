@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { CartContextProvider } from '@/contexts/cart-context';
 
 
 
@@ -22,9 +23,11 @@ function AppProvider({
   }))
   return (
     <QueryClientProvider client={queryClient}>
-      <NuqsAdapter>
+      {/* <NuqsAdapter> */}
+      <CartContextProvider>
         {children}
-      </NuqsAdapter>
+      </CartContextProvider>
+      {/* </NuqsAdapter> */}
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
   )

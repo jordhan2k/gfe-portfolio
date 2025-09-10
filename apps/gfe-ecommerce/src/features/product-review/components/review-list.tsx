@@ -21,9 +21,6 @@ function ReviewList({
   const mergedData = data?.pages.flatMap((page) => page.data) ?? [];
   const remainingCount = (data?.pages?.[0]?.pagination?.total ?? 0) - mergedData.length;
 
-  // const render = useRef(0);
-  // console.log('rvl', render.current++);
-
   return (
     <div className={clsx('h-[calc(100vh_-_160px)] col-span-4 lg:col-span-6 lg:pr-8 gap-6 lg:overflow-auto', className)}>
       {

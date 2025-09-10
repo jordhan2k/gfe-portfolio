@@ -1,10 +1,11 @@
 'use client'
 import { RiCloseLine, RiMenuLine, RiShoppingBag3Line } from '@remixicon/react'
 import { NavLinkType } from '@repo/ui/src/components/marketing/footer-section'
-import { Button } from '@repo/ui/src/components/ui/button'
+import { Button, LinkButton } from '@repo/ui/src/components/ui/button'
 import { AppLink } from '@repo/ui/src/components/ui/link'
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 
@@ -21,12 +22,14 @@ function NavBar({
   return (
     <Header>
       <div className='max-w-[90rem] mx-auto px-4 md:px-8 xl:px-28 flex py-3 min-h-[4.25rem] items-center gap-24 justify-between'>
-        <Image
-          width={112}
-          height={32}
-          alt="Abstractly Logo"
-          src={logo}
-        />
+        <Link href={"/"}>
+          <Image
+            width={112}
+            height={32}
+            alt="Abstractly Logo"
+            src={logo}
+          />
+        </Link>
         <nav className='hidden xl:flex flex-1'>
           <ul className='flex flex-row gap-8 text-base font-medium text-neutral-600 [&>li]:hover:text-neutral-800 '>
             {
@@ -37,7 +40,7 @@ function NavBar({
           </ul>
         </nav>
         <div className='flex gap-4'>
-          <Button size={'2xl'} variant={'link-gray'}><RiShoppingBag3Line /></Button>
+          <LinkButton href={'/cart'} aria-label='Go to cart' size={'2xl'} variant={'link-gray'}><RiShoppingBag3Line /></LinkButton>
           <MobileNavMenu navLinks={navLinks} />
         </div>
       </div>
@@ -109,7 +112,7 @@ const MobileNavMenu = ({
         <ul className='flex flex-col gap-2 text-base font-medium text-neutral-600 [&>li]:hover:text-neutral-800 [&>li]:px-3 [&>li]:py-2'>
           {
             navLinks?.map(({ href, label }) => (
-              <li key={label}><AppLink variant={'gray'} size={'lg'} href={href}>{label}</AppLink></li>
+              <li key={label}><AppLink onClick={() => toggleMenu(false)} variant={'gray'} size={'lg'} href={href}>{label}</AppLink></li>
             ))
           }
         </ul>

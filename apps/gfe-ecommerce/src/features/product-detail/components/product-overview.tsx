@@ -6,8 +6,6 @@ import { AppLink } from '@repo/ui/src/components/ui/link';
 import { useCartControlContext, useProductDetail } from '../context';
 
 function ProductOverview() {
-  // const render = useRef(0);
-  // console.log('overview', render.current++)
   const { product } = useProductDetail();
   const { inventory } = useCartControlContext();
   if (!product) return null;
@@ -17,6 +15,7 @@ function ProductOverview() {
     // info,
     rating,
     reviews } = product!;
+  const hasDiscount = !!inventory?.discount_percentage || !!inventory?.discount;
   const roundedRating = Math.round(rating * 10) / 10;
   return (
     <>
@@ -28,9 +27,9 @@ function ProductOverview() {
         {/* price */}
         <div className='mb-2'>
           <span className='text-neutral-600 text-3xl font-medium'>
-            ${inventory?.sale_price}
+            ${hasDiscount ? inventory?.sale_price : inventory?.list_price}
           </span>
-          <span className='text-neutral-400 text-lg font-medium line-through ml-1'>${inventory?.list_price}</span>
+          {hasDiscount ? <span className='text-neutral-400 text-lg font-medium line-through ml-1'>${inventory?.list_price}</span> : null}
         </div>
         {inventory?.discount_percentage ? <Badge size={"lg"} variant={"warning"}>{inventory?.discount_percentage}% OFF</Badge> : null}
         {inventory?.discount ? <Badge size={"lg"} variant={"success"}>${inventory?.discount} OFF</Badge> : null}
@@ -41,7 +40,7 @@ function ProductOverview() {
           <RatingStars rating={roundedRating} />
           {
             reviews > 0
-              ? <AppLink href={`/products/${product_id}/reviews`} scroll={false}>See all {reviews} {reviews > 1 ? 'reviews' : 'review'}</AppLink>
+              ? <AppLink href={`/products/${product_id}/reviews`}>See all {reviews} {reviews > 1 ? 'reviews' : 'review'}</AppLink>
               : <>
                 <div className='text-sm font-normal text-neutral-900'>No review yet.</div>
                 <AppLink href={'#review'} >Be the first</AppLink>

@@ -6,8 +6,7 @@ import { useColorContext, useProductActions } from '../context';
 function AvailableColors() {
   const { onSelectColor } = useProductActions();
   const { availableColors, selectedColor } = useColorContext();
-  // const render = useRef(0);
-  // console.log('color', render.current++)
+
   return (
     <div className='flex flex-col gap-4'>
       <div className='text-sm font-normal text-neutral-500'>Available Colors</div>
@@ -16,6 +15,7 @@ function AvailableColors() {
           availableColors.map((c) => (
             <li key={c.color} aria-label={`Color ${c.color}`}>
               <ColorOption
+                size='lg'
                 color={c.color}
                 disabled={!!c.disabled}
                 onClick={() => onSelectColor(c.color)}

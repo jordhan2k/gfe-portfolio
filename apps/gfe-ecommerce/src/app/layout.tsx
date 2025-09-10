@@ -1,8 +1,11 @@
-import "@repo/ui/styles.css";
-import "./globals.css";
-import type { Metadata } from "next";
+import { NavBar } from "@/components/navigation/nav-bar";
 import { notoSans } from "@repo/ui/config";
+import { Toaster } from "@repo/ui/src/components/ui/toaster";
+import "@repo/ui/styles.css";
+import type { Metadata } from "next";
 import AppProvider from "./app-provider";
+import "./globals.css";
+import Footer from "@/components/common/footer";
 
 
 export const metadata: Metadata = {
@@ -21,10 +24,11 @@ export default function RootLayout({
   return (
 
     <html lang="en">
-      <body className={`${notoSans.className} antialiased`}>
+      <body className={`${notoSans.className} antialiased bg-[linear-gradient(147.52deg,#f9fafb_8.89%,#d2d6db_100.48%)]`}>
         <AppProvider>
           {children}
         </AppProvider>
+        <Toaster />
       </body>
     </html>
   );
