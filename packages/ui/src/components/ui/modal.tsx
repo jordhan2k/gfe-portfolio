@@ -33,7 +33,7 @@ function Modal({
     onOpenChange?.(false)
   }
   return (
-    <div className={clsx('ui:fixed ui:w-dvw ui:h-dvh ui:flex ui:justify-center ui:items-center ui:top-0 ui:p-4',
+    <div className={clsx('z-1000 ui:fixed ui:w-dvw ui:h-dvh ui:flex ui:justify-center ui:items-center ui:-left-0 ui:right-0 ui:top-0 ui:p-4',
       {
         'ui:pointer-events-none ui:opacity-0': !visible,
       }

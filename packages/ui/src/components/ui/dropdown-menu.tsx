@@ -3,10 +3,11 @@
 import { RiArrowDownSLine, RiCheckboxCircleFill } from '@remixicon/react';
 import clsx from 'clsx';
 import { KeyboardEvent, ReactNode, useEffect, useRef, useState } from 'react';
-import { Button } from './button';
+import { Button, ButtonProps } from './button';
+import { cn } from '#dep/lib/utils';
 
 interface DropdownMenuProps<T> {
-  placeholder: string;
+  placeholder: string | React.ReactNode;
   options: T[];
   disabled?: boolean;
   closeOnSelect?: boolean;
@@ -15,6 +16,11 @@ interface DropdownMenuProps<T> {
   getItemValue: (item: T) => string;
   getItemIcon?: (item: T) => ReactNode;
   getItemDisabled?: (item: T) => boolean;
+
+
+
+  menuProps?: React.ComponentProps<'ul'>;
+  buttonProps?: ButtonProps;
 }
 
 function DropdownMenu<T>({
@@ -26,7 +32,9 @@ function DropdownMenu<T>({
   getItemValue,
   getItemLabel,
   getItemIcon,
-  getItemDisabled
+  getItemDisabled,
+  menuProps,
+  buttonProps
 }: DropdownMenuProps<T>) {
 
   const [selectOption, setSelectedOption] = useState<T | null>(null);
@@ -65,17 +73,23 @@ function DropdownMenu<T>({
         aria-haspopup="menu"
         aria-expanded={visible}
         disabled={disabled}
-        variant={'secondary'} size={'sm'} className='ui:w-full ui:justify-between'>
+        variant={'secondary'}
+        size={'sm'}
+        {...buttonProps}
+        className={cn('ui:w-full ui:justify-between', buttonProps?.className)}
+      >
         {selectOption ? getItemLabel(selectOption) : placeholder}
         <RiArrowDownSLine className='ui:size-5' />
       </Button>
       <ul role='menu'
-        className={clsx('ui:absolute ui:transition-all ui:flex ui:flex-col ui:p-2 ui:gap-2 ui:rounded-lg ui:shadow-sm ui:w-full',
+        className={cn(clsx('ui:z-1000 ui:absolute ui:transition-all ui:flex ui:flex-col ui:p-2 ui:gap-2 ui:rounded-lg ui:shadow ui:w-full ui:bg-white ui:max-h-[500px] ui:overflow-auto',
           {
             'ui:translate-y-0 ui:opacity-0 ui:pointer-events-none': !visible,
             'ui:translate-y-2.5 ui:opacity-100': visible
           }
-        )}>
+        ), menuProps?.className)}
+
+      >
         {
           options.map((item) => {
             const label = getItemLabel(item);

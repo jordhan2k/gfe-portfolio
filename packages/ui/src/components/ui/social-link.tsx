@@ -12,14 +12,16 @@ const iconMap = {
 
 type SocialLinkProps = React.ComponentProps<'a'>
   & {
-    type: 'facebook' | 'github' | 'instagram' | 'linkedin' | 'twitter';
+    type?: 'facebook' | 'github' | 'instagram' | 'linkedin' | 'twitter';
+    icon: React.ElementType;
   }
 function SocialLink({
   type,
   className,
+  icon,
   ...props
 }: SocialLinkProps) {
-  const Icon = iconMap[type]
+  const Icon = type ? iconMap[type] : icon;
   return (
     <a
       className={cn(

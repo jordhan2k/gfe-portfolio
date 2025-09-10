@@ -1,14 +1,14 @@
-import React from "react"
-import { Button, ButtonProps } from "../ui/button";
 import { RiCheckFill } from "@remixicon/react";
 import Image from "next/image";
+import React from "react";
+import { Button, LinkButton, LinkButtonProps } from "../ui/button";
 
 
 type HeroSectionProps = React.ComponentProps<'section'> & {
   imgUrl: string;
   title: string;
   description?: string;
-  buttons: ButtonProps[];
+  buttons: LinkButtonProps[];
   bulletPoints?: string[];
 }
 
@@ -52,7 +52,7 @@ function HeroSection({
         </div>
         <div className="ui:flex ui:flex-row ui:flex-wrap ui:gap-4 ui:md:gap-8">
           {
-            buttons.map((button, index) => <Button key={`button-${index}`} size={"2xl"} className="ui:md:w-[213px] ui:xl:w-[175.5px]" {...button}></Button>)
+            buttons.map((button, index) => <LinkButton key={`button-${index}`} size={"2xl"} className="ui:md:w-[213px] ui:xl:w-[175.5px]" {...button}></LinkButton>)
           }
         </div>
       </div>
@@ -62,10 +62,11 @@ function HeroSection({
         // loading="lazy"
         src={imgUrl}
         alt="Hero section banner"
-        className="ui:col-span-4 ui:md:col-span-6 ui:xl:col-span-7"
+        className="ui:col-span-4 ui:md:col-span-6 ui:xl:col-span-7 ui:h-[264px] ui:md:h-[526px] ui:w-full ui:object-cover ui:rounded-lg"
       />
     </section>
   )
 }
 
-export { HeroSection }
+export { HeroSection };
+
