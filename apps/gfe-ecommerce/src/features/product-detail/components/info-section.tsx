@@ -3,6 +3,7 @@
 
 import { Accordion } from '@repo/ui/src/components/ui/accordion';
 import { useProductDetail } from '../context';
+import { Separator } from '@/components/ui/separator';
 
 function InfoSection() {
   const {
@@ -10,8 +11,7 @@ function InfoSection() {
   } = useProductDetail();
   const infoList = product?.info;
   const name = product?.name;
-  // const render = useRef(0);
-  // console.log('info', render.current++)
+
   if (!infoList?.length) return null;
   return (
     <ul>
@@ -30,7 +30,7 @@ function InfoSection() {
                 }
               </ul>}
             />
-            {index !== infoList.length - 1 ? <hr className='text-neutral-200 my-6' /> : null}
+            {index !== infoList.length - 1 ? <Separator className='my-6' /> : null}
           </li>
         ))
       }

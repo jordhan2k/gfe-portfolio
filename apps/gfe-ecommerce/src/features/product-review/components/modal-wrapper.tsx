@@ -15,8 +15,6 @@ function ModalWrapper({
   const router = useRouter();
   const { id } = useParams();
   const queryClient = useQueryClient();
-  // const render = useRef(0);
-  // console.log('md-wrapper', render.current++);
 
   const handleCloseModal = () => {
     router.back()

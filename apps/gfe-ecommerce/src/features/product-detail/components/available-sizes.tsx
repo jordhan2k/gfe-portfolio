@@ -6,8 +6,6 @@ import { useProductActions, useSizeContext } from '../context';
 function AvailableSizes() {
   const { onSelectSize } = useProductActions();
   const { availableSizes, selectedSize } = useSizeContext();
-  // const render = useRef(0);
-  // console.log('size', render.current++)
   if (!availableSizes.length) return null;
 
   return (

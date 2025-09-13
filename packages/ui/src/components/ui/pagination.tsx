@@ -70,6 +70,8 @@ function Pagination({
   totalPages = 1,
   initialPage = 1,
   disabled = false,
+  // onPrevPage,
+  onPageChange,
   ...props
 }: React.ComponentProps<'div'> &
   {
@@ -79,14 +81,16 @@ function Pagination({
     initialPage?: number;
     onPageChange?: (page: number) => void;
     disabled?: boolean;
+    // onPrevPage?: (page: number) => void;
+    // onNextPage?: (page: number) => void;
+    // onSelectPage?: (page: number) => void;
   }) {
   const [currentPage, setCurrentPage] = React.useState(initialPage);
 
   const paginationButtons = useMemo(() => {
-
     const buttons: PaginationItemType[] = [];
-
     buttons.push({ page: 1 });
+    if (totalPages === 1) return buttons
     if (currentPage === totalPages && totalPages >= 5) {
       buttons.push({ page: 2 });
     }
@@ -107,18 +111,19 @@ function Pagination({
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
+    onPageChange?.(newPage);
   }
 
   const handlePrevButton = () => {
     if (currentPage > 1) {
       setCurrentPage(prev => prev - 1);
-      if (props.onPageChange) props.onPageChange(currentPage - 1);
+      onPageChange?.(currentPage - 1);
     }
   }
   const handleNextButton = () => {
     if (currentPage < totalPages) {
       setCurrentPage(prev => prev + 1);
-      if (props.onPageChange) props.onPageChange(currentPage + 1);
+      onPageChange?.(currentPage + 1);
     }
   }
   return (

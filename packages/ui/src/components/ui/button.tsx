@@ -2,6 +2,7 @@
 
 import { cn } from '#dep/lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
+import Link, { LinkProps } from 'next/link'
 import React from 'react'
 
 const buttonVariants = cva(
@@ -17,32 +18,85 @@ const buttonVariants = cva(
         "destructive": "ui:bg-red-600 ui:text-white ui:hover:bg-red-700 ui:focus:bg-red-700 ui:focus:ring-red-800/20 ui:disabled:bg-neutral-100 ui:disabled:text-neutral-400 ui:disabled:shadow-none!",
       },
       size: {
-        sm: "ui:px-3 ui:py-2 ui:text-sm ui:gap-1.5 ui:has-[>svg:nth-of-type(1):last-of-type]:px-2",
-        md: "ui:px-3.5 ui:py-2.5 ui:text-sm ui:gap-1.5 ui:has-[>svg:nth-of-type(1):last-of-type]:px-2.5",
-        lg: "ui:px-4 ui:py-2.5 ui:text-base ui:gap-2 ui:has-[>svg:nth-of-type(1):last-of-type]:px-2.5",
-        xl: "ui:px-5 ui:py-3 ui:text-base ui:gap-2 ui:has-[>svg:nth-of-type(1):last-of-type]:px-3",
-        "2xl": "ui:px-6 ui:py-4 ui:text-lg ui:gap-3 ui:has-[>svg:nth-of-type(1):last-of-type]:px-4 ui:[&_svg:not([class*='size-'])]:size-6"
+        sm: "ui:py-2 ui:text-sm ui:gap-1.5 ",
+        md: "ui:px-3.5 ui:py-2.5 ui:text-sm ui:gap-1.5",
+        lg: "ui:px-4 ui:py-2.5 ui:text-base ui:gap-2",
+        xl: "ui:px-5 ui:py-3 ui:text-base ui:gap-2",
+        "2xl": "ui:px-6 ui:py-4 ui:text-lg ui:gap-3"
+      },
+      iconOnly: {
+        true: '',
+        false: ''
       }
     },
+    compoundVariants: [
+      {
+        iconOnly: true,
+        size: 'sm',
+        className: 'ui:has-[>svg:nth-of-type(1):last-of-type]:px-2'
+      },
+      {
+        iconOnly: true,
+        size: 'md',
+        className: 'ui:has-[>svg:nth-of-type(1):last-of-type]:px-2.5'
+      },
+      {
+        iconOnly: true,
+        size: 'lg',
+        className: 'ui:has-[>svg:nth-of-type(1):last-of-type]:px-2.5'
+      },
+      {
+        iconOnly: true,
+        size: 'xl',
+        className: 'ui:has-[>svg:nth-of-type(1):last-of-type]:px-3'
+      },
+      {
+        iconOnly: true,
+        size: '2xl',
+        className: "ui:has-[>svg:nth-of-type(1):last-of-type]:px-4 ui:[&_svg:not([class*='size-'])]:size-6"
+      },
+
+    ],
     defaultVariants: {
       variant: 'primary',
-      size: 'md'
+      size: 'md',
+      iconOnly: false
     }
   })
 
 
+
+
 type ButtonProps = React.ComponentProps<"button">
   & VariantProps<typeof buttonVariants>
-
+type LinkButtonProps = React.ComponentProps<typeof Link>
+  & VariantProps<typeof buttonVariants>
 function Button({
   variant,
   size,
   className,
+  iconOnly = false,
   ...props
 }: ButtonProps) {
+
   return (
-    <button role='button' className={cn(buttonVariants({ variant, size, className }))} {...props}></button>
+    <button role='button' className={cn(buttonVariants({ variant, size, iconOnly, className }))} {...(props as React.ComponentProps<"button">)}></button>
   )
 }
 
-export { Button, type ButtonProps }
+function LinkButton({
+  variant,
+  size,
+  className,
+  href,
+  iconOnly = false,
+  ...props
+}: LinkButtonProps) {
+  return <Link
+    {...(props as React.ComponentProps<typeof Link>)}
+    href={href}
+    className={cn(buttonVariants({ variant, size, iconOnly, className }))}
+  />
+}
+
+export { Button, LinkButton, type ButtonProps, type LinkButtonProps }

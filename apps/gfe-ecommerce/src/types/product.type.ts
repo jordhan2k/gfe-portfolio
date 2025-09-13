@@ -1,3 +1,4 @@
+import { ICollection } from "./collection.type";
 import { IPagination } from "./pagination.type";
 
 export type AvailableColorType = {
@@ -16,13 +17,13 @@ export interface ICategory {
   created_at: string;
 }
 
-export interface ICollection {
-  collection_id: string;
-  name: string;
-  description: string;
-  image_url: string;
-  created_at: string;
-}
+// export interface ICollection {
+//   collection_id: string;
+//   name: string;
+//   description: string;
+//   image_url: string;
+//   created_at: string;
+// }
 
 export interface IProductImage {
   color: string;
@@ -72,4 +73,14 @@ export interface IProduct {
 export interface IGetProductListData {
   data: IProduct[];
   pagination: IPagination;
+}
+
+export interface IProductListingSearchParams {
+  sort?: string;
+  page?: string;
+  direction?: string;
+  collection?: string[];
+  category?: string[];
+  color?: string[];
+  rating?: string[];
 }

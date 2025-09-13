@@ -15,8 +15,6 @@ function ProductImages() {
 
   const { product } = useProductDetail();
 
-  // const render = useRef(0);
-  // console.log('image', render.current++)
   return (
     <div className='flex flex-col gap-6'>
       <Image

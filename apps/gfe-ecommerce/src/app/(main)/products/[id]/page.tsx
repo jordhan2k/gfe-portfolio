@@ -1,6 +1,7 @@
+import CollectionSection from '@/features/product-detail/components/collection-section';
+import ProductSpecification from '@/features/product-detail/components/product-specification';
 import { ProductDetailContextProvider } from '@/features/product-detail/context';
 import { ProductDetail } from '@/features/product-detail/product-detail';
-import ProductSpecification from '@/features/product-specification/product-specification';
 import { IProduct } from '@/types';
 import { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -50,14 +51,7 @@ export default async function ProductDetailPage(props: Props) {
     <ProductDetailContextProvider initialProduct={product}>
       <ProductDetail />
       <ProductSpecification />
-      {/* <div className='px-4 py-12 xl:p-24 grid grid-cols-4 md:grid-cols-6 xl:grid-cols-12 gap-x-4 md:gap-x-8 gap-y-12'>
-        <div className='col-span-4 md:col-span-6'>
-          <ProductImages />
-        </div>
-        <div className='col-span-4 md:col-span-6'>
-          <ProductMeta />
-        </div>
-      </div> */}
+      <CollectionSection />
     </ProductDetailContextProvider>
 
   )
