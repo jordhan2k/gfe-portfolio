@@ -40,16 +40,13 @@ function CouponCode() {
       reset();
     },
     onError: (error: any) => {
-      console.log(error?.message)
       setError('coupon_code', { message: error?.message })
     },
   })
-  console.log(formState.errors)
 
   const handleFormSubmit = handleSubmit((data) => {
     mutate({ code: data.coupon_code })
   })
-  console.log(discount?.coupon_code)
 
   return (
     <>

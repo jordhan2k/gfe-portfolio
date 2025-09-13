@@ -16,7 +16,6 @@ function DeliveryMethod({
   subtitle, name, value, className,
   isSelected, onClick, ...props
 }: DeliveryMethodProps) {
-  console.log(isSelected)
   return (
     <button
       type='button'

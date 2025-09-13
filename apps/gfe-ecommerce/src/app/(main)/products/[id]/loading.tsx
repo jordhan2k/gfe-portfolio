@@ -1,6 +1,4 @@
-import { ProductImageSkeleton } from '@/features/product-detail/components/product-images'
 import { RiLoader5Line } from '@remixicon/react'
-import React from 'react'
 
 export default function Loading() {
   return (

@@ -42,12 +42,11 @@ const CartContextProvider = ({
     localStorage.setItem(LOCAL_KEY, JSON.stringify(cloneCartItems));
   };
 
-  const clearCart = () => {
-    console.log('cleat')
+  const clearCart = useCallback(() => {
     setCartItems([]);
     setDiscount(null)
     localStorage.removeItem(LOCAL_KEY);
-  }
+  }, [])
 
   const addToCart = useCallback((params: AddToCartParams) => {
     const { inventory, product, imageUrl, quantity } = params;
@@ -83,10 +82,7 @@ const CartContextProvider = ({
       total_sale_price: unit.sale_price * quantity
     }
 
-    console.log({ findExistCartItem })
-
     if (findExistCartItem < 0) {
-      console.log({ cartItem })
       cloneCartItems.push(cartItem)
     } else {
       cloneCartItems = cloneCartItems.map((item) => {
@@ -95,7 +91,6 @@ const CartContextProvider = ({
 
 
         const adjustQuantity = item.quantity + cartItem.quantity > inventory.stock ? inventory.stock : item.quantity + cartItem.quantity;
-        console.log(item.quantity, cartItem.quantity, inventory.stock, adjustQuantity)
 
         return {
           ...cartItem,
@@ -105,7 +100,6 @@ const CartContextProvider = ({
         }
       })
     }
-    console.log({ cloneCartItems })
 
     updateCart(cloneCartItems);
 
