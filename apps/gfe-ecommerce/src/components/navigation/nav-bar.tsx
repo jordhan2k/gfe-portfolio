@@ -1,4 +1,5 @@
 'use client'
+import { useCartContext } from '@/contexts/cart-context'
 import { RiCloseLine, RiMenuLine, RiShoppingBag3Line } from '@remixicon/react'
 import { NavLinkType } from '@repo/ui/src/components/marketing/footer-section'
 import { Button, LinkButton } from '@repo/ui/src/components/ui/button'
@@ -40,12 +41,20 @@ function NavBar({
           </ul>
         </nav>
         <div className='flex gap-4'>
-          <LinkButton href={'/cart'} aria-label='Go to cart' size={'2xl'} variant={'link-gray'}><RiShoppingBag3Line /></LinkButton>
+          <CartButton />
           <MobileNavMenu navLinks={navLinks} />
         </div>
       </div>
     </Header>
   )
+}
+
+const CartButton = () => {
+  const { cartItems } = useCartContext();
+  return <div className='relative'>
+    <LinkButton href={'/cart'} aria-label='Go to cart' size={'2xl'} variant={'link-gray'}><RiShoppingBag3Line /></LinkButton>
+    <div hidden={!cartItems.length} className='-top-[50%] -right-[50%] rounded-full absolute h-4.5 min-w-4.5 flex items-center justify-center px-1 text-xs text-white font-semibold bg-indigo-700'>{cartItems.length}</div>
+  </div>
 }
 
 const Header = ({ // children prop

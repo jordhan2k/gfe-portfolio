@@ -8,6 +8,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { QuantityControl } from './quantity-control';
 import { Button } from '@repo/ui/src/components/ui/button';
+import { useState } from 'react';
+import { ModalDialog } from '@repo/ui/src/components/ui/modal-dialog';
+import { useCartContext } from '@/contexts/cart-context';
 
 type CartItemProps = ICartProduct
   & Partial<ICartUnit>
@@ -31,6 +34,8 @@ function CartItem({
 }: CartItemProps) {
   const redirectLink = `/products/${product_id}`;
   const linkName = `Go to detail page of ${name}`;
+  const { } = useCartContext();
+
   return (
     <div className='flex flex-col md:flex-row gap-4 md:gap-8'>
       <Link href={redirectLink} aria-label={linkName}>
@@ -54,35 +59,57 @@ function CartItem({
 
         <div className='flex gap-4 items-center'>
           <div className='flex flex-1 gap-4  items-center'>
-            <QuantityControl quantity={quantity}
-              onDecrease={() => { }}
-              onIncrease={() => { }} />
-
-            {sku ? <RemoveCartItem sku={sku} /> : null}
+            {sku ? <CartItemControl sku={sku} quantity={quantity} /> : null}
           </div>
 
           <div className='text-lg font-medium text-neutral-900 flex gap-2 items-center whitespace-nowrap'>
             ${total_sale_price ? total_sale_price : total_list_price}
-            {total_sale_price ? <span className='text-xs font-normal text-neutral-600 line-through'>${total_list_price}</span> : null}
+            {total_sale_price < total_list_price ? <span className='text-xs font-normal text-neutral-600 line-through'>${total_list_price}</span> : null}
           </div>
-
-
         </div>
       </div>
     </div>
   )
 }
 
-const RemoveCartItem = ({
-  sku
+const CartItemControl = ({
+  sku, quantity
 }: {
   sku: string;
-
+  quantity: number;
 }) => {
+  const { removeFromCart, decreaseQuantity, increaseQuantity } = useCartContext();
+  const [visible, setVisible] = useState(false);
 
+  const handleDecrease = () => {
+    if (quantity === 1) {
+      setVisible(true);
+      return;
+    }
+    decreaseQuantity(sku)
+  }
+  const handleIncrease = () => {
+    increaseQuantity(sku)
+  }
   return (
     <>
-      <Button size={'sm'} variant={'link-gray'}>Remove</Button>
+      <QuantityControl
+        quantity={quantity}
+        onDecrease={handleDecrease}
+        onIncrease={handleIncrease}
+      />
+      <Button onClick={() => setVisible(true)} size={'sm'} variant={'link-gray'}>Remove</Button>
+      <ModalDialog
+        title='Confirm Item Removal'
+        description='Are you sure you want to remove this item from your shopping cart?'
+        confirmText='Yes'
+        cancelText='Cancel'
+        onOpenChange={setVisible}
+        visible={visible}
+        variant='primary'
+        onConfirm={() => removeFromCart(sku)}
+        onCancel={() => setVisible(false)}
+      />
     </>
   )
 }

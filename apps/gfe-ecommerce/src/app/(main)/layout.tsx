@@ -20,8 +20,9 @@ export default function MainLayout({
           label: 'Latest arrivals'
         }
       ]} />
-      <main className='max-w-[90rem] w-auto mx-auto p-4 pt-[7rem]'>
-        <div className='w-full bg-white shadow rounded-lg '>
+      <main className='max-w-[90rem] w-auto mx-auto p-4 flex flex-col'>
+        <div className='h-[7rem]' />
+        <div className='w-full bg-white shadow rounded-lg flex-1'>
           <div className='min-h-[calc(100dvh-7rem)]'>
             {children}
           </div>

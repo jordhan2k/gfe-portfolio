@@ -124,3 +124,52 @@ export const getListingQueryString = (
   }&direction=${direction ?? "desc"}&page=${page ?? 1}`;
   return queryString;
 };
+
+export const formatPrice = (price: number) =>
+  Number.isInteger(price) ? price : price.toFixed(2);
+
+export const formatCardNumber = (value: string): string => {
+  // remove all non-digit characters
+  const digits = value.replace(/\D/g, "");
+  // group into 4s and join with space
+  return digits.replace(/(.{4})/g, "$1 ").trim();
+};
+
+export const formatCvv = (value: string) => {
+  const digits = value.replace(/\D/g, "");
+  return digits.substring(0, 3);
+};
+export const formatZip = (value: string) => {
+  const digits = value.replace(/\D/g, "");
+  return digits.substring(0, 9);
+};
+
+export const formatExpiry = (value: string): string => {
+  // remove all non-digits
+  const digits = value.replace(/\D/g, "");
+
+  // limit to max 4 digits (MMYY)
+  const sliced = digits.slice(0, 4);
+
+  if (sliced.length <= 2) {
+    return sliced; // just month part
+  }
+
+  return sliced.slice(0, 2) + "/" + sliced.slice(2);
+};
+
+export function isValidExpiry(value: string): boolean {
+  if (!/^\d{2}\/\d{2}$/.test(value)) return false;
+
+  const [mm, yy] = value.split("/").map(Number);
+  if (!mm || !yy) return false;
+  if (mm < 1 || mm > 12) return false;
+
+  const currentYear = new Date().getFullYear() % 100; // YY format
+  const currentMonth = new Date().getMonth() + 1;
+
+  if (yy < currentYear) return false;
+  if (yy === currentYear && mm < currentMonth) return false;
+
+  return true;
+}
