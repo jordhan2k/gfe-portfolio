@@ -80,9 +80,9 @@ function DropdownMenu<T>({
   }
   return (
     <div className='ui:w-full'>
+      {/* <select className='ui:sr-only' /> */}
       <div ref={dropdownRef} className='ui:w-full ui:relative ui:flex ui:flex-col'>
         {label ? <label onClick={() => {
-          console.log('label')
           buttonRef.current?.click();
           buttonRef.current?.focus();
         }} className='ui:w-full ui:text-sm ui:font-medium ui:text-gray-700' htmlFor={buttonProps?.name}>{label}</label> : null}
@@ -96,9 +96,9 @@ function DropdownMenu<T>({
           variant={'secondary'}
           size={'sm'}
           {...buttonProps}
-          className={cn('ui:w-full ui:justify-between ui:my-1.5', buttonProps?.className)}
+          className={cn('ui:w-full ui:justify-between ui:my-1.5 ui:flex', buttonProps?.className)}
         >
-          {selectOption ? getItemLabel(selectOption) : placeholder}
+          <span className='ui:overflow-hidden ui:text-left ui:flex-1 ui:block ui:whitespace-nowrap ui:text-ellipsis'>{selectOption ? getItemLabel(selectOption) : placeholder}</span>
           <RiArrowDownSLine className='ui:size-5' />
         </Button>
         <ul role='menu'
@@ -110,8 +110,8 @@ function DropdownMenu<T>({
           ), menuProps?.className)}
 
         >
-          {
-            options.map((item) => {
+          {options.length
+            ? options.map((item) => {
               const label = getItemLabel(item);
               const value = getItemValue(item);
               const icon = getItemIcon?.(item) ?? null;
@@ -132,6 +132,7 @@ function DropdownMenu<T>({
                       'ui:bg-neutral-50': isActive,
                       'ui:text-neutral-900 ui:hover:bg-neutral-50 ui:cursor-pointer': !itemDisabled,
                       'ui:text-neutral-400 ui:cursor-not-allowed': itemDisabled
+
                     }
                   )}
                 >
@@ -141,6 +142,7 @@ function DropdownMenu<T>({
                 </li>
               )
             })
+            : <div className='ui:text-sm ui:font-normal ui:text-neutral-600 ui:text-center'>No data</div>
           }
         </ul>
       </div>

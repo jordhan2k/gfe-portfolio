@@ -1,7 +1,7 @@
 'use client'
 
 import { Separator } from '@/components/ui/separator'
-import { ICountry, IGetCountryList } from '@/types'
+import { ICountry, IGetCountryList, IState } from '@/types'
 import { TextInput } from '@repo/ui/src/components/form/text-input'
 // import { DropdownMenu } from '@repo/ui/src/components/ui/dropdown-menu'
 import React, { useEffect, useState } from 'react'
@@ -14,24 +14,16 @@ import { DELIVERY_METHODS } from '@/config'
 
 
 function CustomerDetails() {
-  const { control, formState: { disabled }, watch, setValue } = useFormContext();
-  const [countries, setCountries] = useState<any[]>([]);
+  const { control, formState: { disabled }, watch, setValue, getValues } = useFormContext();
+  const [countries, setCountries] = useState<ICountry[]>([]);
+  const [states, setStates] = useState<IState[]>([]);
   // const [selectedDelivery, setSelectedDelivery] = useState<'standard' | 'express'>('standard');
 
   const getCountries = async () => {
     const response = await fetch('https://countriesnow.space/api/v0.1/countries/states');
     const result: IGetCountryList = await response.json();
-
-
     if (!result?.error) {
-      setCountries(result.data
-        //   ?.map((country: ICountry) => ({
-        //   label: country.name,
-        //   value: country.name,
-        //   iso2: country.iso2,
-        //   iso3: country.iso3
-        // }))
-      );
+      setCountries(result.data);
     }
   }
 
@@ -41,7 +33,13 @@ function CustomerDetails() {
 
   const selectedDelivery = watch('deliveryMethod');
 
-  console.log(selectedDelivery)
+  const handleSelectCountry = (option: ICountry) => {
+    setStates(option.states ?? []);
+    if (option.iso2 !== getValues('country')?.iso2) {
+      setValue('state', null)
+    }
+  }
+
   return (
     <div className='w-full flex flex-col gap-10'>
 
@@ -80,7 +78,10 @@ function CustomerDetails() {
                 className: 'max-h-[400px]'
               }}
               selectOption={value}
-              onChange={(option) => onChange(option)}
+              onChange={(option) => {
+                handleSelectCountry(option)
+                onChange(option)
+              }}
               disabled={disabled}
               error={error?.message}
               placeholder={<span className='text-neutral-500'>Country / Region</span>}
@@ -144,20 +145,51 @@ function CustomerDetails() {
           />
         </div>
 
-        <div className='w-full flex flex-col md:flex-row gap-6 md:gap-8'>
-          <Controller
-            name='city'
-            control={control}
-            render={({ field, fieldState: { error } }) => <TextInput
-              {...field}
-              label='City'
-              placeholder='City'
-              error={error?.message}
-              maxLength={19}
+        <div className='w-full grid grid-cols-6 md:flex-row gap-y-6 md:gap-8 '>
+          <div className='col-span-6 md:col-span-2'>
+            <Controller
+              name='city'
+              control={control}
+              render={({ field, fieldState: { error } }) => <TextInput
+                {...field}
+                label='City'
+                placeholder='City'
+                error={error?.message}
+                maxLength={19}
+              />
+              }
             />
-            }
-          />
-          <Controller
+          </div>
+          <div className='col-span-6 md:col-span-2'>
+            <Controller
+              name='state'
+              control={control}
+              render={({ field: { value, disabled, onChange }, fieldState: { error } }) => (
+                <DropdownMenu<IState>
+                  label='State'
+                  buttonProps={{
+                    className: 'shadow-none px-3.5 bg-neutral-50',
+                    type: 'button'
+                  }}
+                  menuProps={{
+                    className: 'max-h-[400px]'
+                  }}
+                  selectOption={value}
+                  onChange={(option) => {
+                    // handleSelectCountry(option)
+                    onChange(option)
+                  }}
+                  disabled={disabled}
+                  error={error?.message}
+                  placeholder={<span className='text-neutral-500'>State</span>}
+                  options={states}
+                  getItemLabel={(item) => item.name}
+                  getItemValue={(item) => `${item.state_code}`}
+                />
+              )}
+            />
+          </div>
+          {/* <Controller
             name='state'
             control={control}
             render={({ field, fieldState: { error } }) => <TextInput
@@ -168,20 +200,23 @@ function CustomerDetails() {
               maxLength={19}
             />
             }
-          />
-          <Controller
-            name='zip'
-            control={control}
-            render={({ field, fieldState: { error } }) => <TextInput
-              {...field}
-              label='Zip'
-              onChange={(e) => field.onChange(formatZip(e.target.value))}
-              placeholder='12345'
-              error={error?.message}
-              maxLength={19}
+          /> */}
+          <div className='col-span-6 md:col-span-2'>
+            <Controller
+              name='zip'
+              control={control}
+              render={({ field, fieldState: { error } }) => <TextInput
+                {...field}
+                label='Zip'
+                onChange={(e) => field.onChange(formatZip(e.target.value))}
+                placeholder='12345'
+                error={error?.message}
+                maxLength={19}
+              />
+
+              }
             />
-            }
-          />
+          </div>
         </div>
       </SubForm>
 

@@ -1,6 +1,5 @@
 import { formatPrice } from '@/lib';
 import { Badge, BadgeProps } from '@repo/ui/src/components/ui/badge';
-import React, { useMemo } from 'react'
 
 type SummaryItemProps = {
   label?: string;

@@ -4,7 +4,6 @@ import "@repo/ui/styles.css";
 import type { Metadata } from "next";
 import AppProvider from "./app-provider";
 import "./globals.css";
-import Footer from "@/components/common/footer";
 
 
 export const metadata: Metadata = {

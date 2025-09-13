@@ -1,9 +1,8 @@
 import { COLORS } from '@/config';
 import { cn } from '@/lib/utils';
 import { RiCheckFill } from '@remixicon/react';
-import { cva, VariantProps } from 'class-variance-authority';
-import clsx from 'clsx'
-import React from 'react'
+import { cva } from 'class-variance-authority';
+import clsx from 'clsx';
 
 const containerVariants = cva(
   'relative flex items-center justify-center',
@@ -83,4 +82,4 @@ function ColorOption({
   )
 }
 
-export { ColorOption }
+export { ColorOption };

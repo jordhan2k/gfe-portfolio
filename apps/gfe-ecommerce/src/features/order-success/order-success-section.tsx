@@ -1,8 +1,8 @@
 'use client'
 
 import { IGetOrder } from '@/types';
-import { RiFileCopy2Line } from '@remixicon/react';
-import { Button } from '@repo/ui/src/components/ui/button';
+import { RiArrowRightLine, RiFileCopy2Line } from '@remixicon/react';
+import { Button, LinkButton } from '@repo/ui/src/components/ui/button';
 import { useToast } from '@repo/ui/src/hooks/use-toast';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -136,7 +136,7 @@ function OrderSuccessSection({
           </div>
         </div>
 
-        <div className='w-full grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-8 gap-y-8'>
+        <div className='w-full grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-8 gap-y-8 flex-1'>
           <div className='col-span-4 md:col-span-3 flex flex-col gap-4'>
             <div className='text-base font-normal text-neutral-600'>Shipping address</div>
             <div className='text-sm font-normal text-neutral-600'>
@@ -153,20 +153,15 @@ function OrderSuccessSection({
             <div className='text-base font-normal text-neutral-600'>Payment</div>
             <div className='flex gap-4'>
               <Visa />
-
-
               <div>
-
                 <div className='text-sm font-normal text-neutral-900'>Ending with {last_4}</div>
                 <div className='text-sm font-normal text-neutral-600'>Payment {exp_month}/{exp_year}</div>
               </div>
-
             </div>
-
           </div>
-
         </div>
 
+        <LinkButton href={'/products'} variant={'secondary'} size={'lg'}>Continue Shopping <RiArrowRightLine /></LinkButton>
       </div>
     </section>
   )

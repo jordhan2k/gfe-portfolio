@@ -22,7 +22,7 @@ const checkoutSchema = z.object({
   line1: z.string().trim().min(1, 'Address line 1 is required'),
   line2: z.string().trim(),
   city: z.string().trim().min(1, 'City is required'),
-  state: z.string().trim().min(1, 'State is required'),
+  // state: z.string().trim().min(1, 'State is required'),
   zip: z.string().trim().min(1, 'Zip is required').refine((value) => value.length >= 4, {
     message: 'Please enter a valid zip code'
   }),
@@ -36,6 +36,10 @@ const checkoutSchema = z.object({
     iso2: z.string(),
     iso3: z.string()
   }).nullable().refine((data) => Boolean(data), { message: 'Country/Region is required' }),
+  state: z.object({
+    name: z.string(),
+    state_code: z.string(),
+  }).nullable().refine((data) => Boolean(data), { message: 'State is required' }),
 
   cardNumber: z.string().trim().min(1, 'Card number is required'),
   nameOnCard: z.string().trim().min(1, 'Name on card is required'),
@@ -78,11 +82,10 @@ function CheckoutSection() {
       })
     },
     onSuccess: (data) => {
-      // console.log({ data })
-      if (data?.data?.id) {
-        localStorage.setItem(`order_${data?.data?.id}`, JSON.stringify(data?.data));
+      if (data?.data?.order_id) {
+        localStorage.setItem(`order_${data?.data?.order_id}`, JSON.stringify(data?.data));
         clearCart();
-        router.replace(`/order-success/${data.data.id}`);
+        router.replace(`/order-success/${data.data.order_id}`);
       }
     }
   })
@@ -109,14 +112,20 @@ function CheckoutSection() {
       line1: 'No 2, Street 1, Road 3',
       line2: '',
       cardNumber: '1111 1111 1111 1111',
-      city: 'Han',
+      city: 'Brooklyn',
       cvv: '234',
       expiry: '03/30',
-      nameOnCard: 'HON TIN DUN',
-      state: 'Han',
+      nameOnCard: 'John Doe',
+      // state: null,
       zip: '123456',
       deliveryMethod: DELIVERY_METHODS[0],
+      state: null,
       country: null
+      // country: {
+      //   iso2: 'US',
+      //   iso3: 'USA',
+      //   name: 'United States'
+      // }
     },
     disabled: isPending
   });
@@ -156,10 +165,10 @@ function CheckoutSection() {
       shipping_details: {
         address: {
           city: data.city,
-          country: data.country?.iso2 ?? '',
+          country: data.country?.name ?? '',
           line1: data.line1,
           line2: data.line2,
-          state: data.state,
+          state: data.state?.name ?? '',
           zip: data.zip,
           countryCode: data.country?.iso2 ?? '',
         },
@@ -174,7 +183,7 @@ function CheckoutSection() {
     <section className='py-12 px-3 md:px-4 md:py-16 xl:p-24'>
 
       <LinkButton href={'/cart'} replace variant={'link-color'} className='mb-8'>
-        <RiArrowLeftSLine /> Back to shopping cart
+        <RiArrowLeftSLine />Back to shopping cart
       </LinkButton>
 
       <h1 className='text-2xl font-semibold text-neutral-900 md:text-3xl xl:text-4xl mb-8'>Checkout</h1>
