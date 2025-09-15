@@ -1,4 +1,7 @@
-import { ButtonProps } from "@repo/ui/src/components/ui/button";
+import {
+  ButtonProps,
+  LinkButtonProps,
+} from "@repo/ui/src/components/ui/button";
 
 const HOME_IMG_URL =
   "https://vaqybtnqyonvlwtskzmv.supabase.co/storage/v1/object/public/projects-images/hero-section-simple/starter/img/prism.jpg";
@@ -19,14 +22,16 @@ const ABOUT_TITLE = "From a tiny desk to the entire world";
 const ABOUT_DESCRIPTION =
   "As a lean, passionate team, we've made something that most would think is impossible - premium abstract images for free and for all.";
 
-const HERO_BUTTONS: ButtonProps[] = [
+const HERO_BUTTONS: LinkButtonProps[] = [
   {
     children: "Learn more",
     variant: "secondary",
+    href: "#",
   },
   {
     children: "See pricing",
     variant: "primary",
+    href: "/pricing",
   },
 ];
 export {
