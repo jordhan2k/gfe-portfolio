@@ -24,12 +24,12 @@ export const Default: Story = {
       {
         children: "Learn more",
         variant: "secondary",
-        onClick: () => alert("learn more clicked")
+        href: '#'
       },
       {
         children: "See pricing",
         variant: "primary",
-        onClick: () => alert("See pricing clicked")
+        href: '#'
       },
     ]
   }
@@ -48,12 +48,12 @@ export const WithBulletPoints: Story = {
       {
         children: "Learn more",
         variant: "secondary",
-        onClick: () => alert("learn more clicked")
+        href: '#'
       },
       {
         children: "See pricing",
         variant: "primary",
-        onClick: () => alert("See pricing clicked")
+        href: '#'
       },
     ]
   }
