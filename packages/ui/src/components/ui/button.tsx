@@ -18,7 +18,7 @@ const buttonVariants = cva(
         "destructive": "ui:bg-red-600 ui:text-white ui:hover:bg-red-700 ui:focus:bg-red-700 ui:focus:ring-red-800/20 ui:disabled:bg-neutral-100 ui:disabled:text-neutral-400 ui:disabled:shadow-none!",
       },
       size: {
-        sm: "ui:py-2 ui:text-sm ui:gap-1.5 ",
+        sm: "ui:px-2.5 ui:py-2 ui:text-sm ui:gap-1.5 ",
         md: "ui:px-3.5 ui:py-2.5 ui:text-sm ui:gap-1.5",
         lg: "ui:px-4 ui:py-2.5 ui:text-base ui:gap-2",
         xl: "ui:px-5 ui:py-3 ui:text-base ui:gap-2",
