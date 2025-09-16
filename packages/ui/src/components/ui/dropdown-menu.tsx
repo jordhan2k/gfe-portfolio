@@ -102,7 +102,7 @@ function DropdownMenu<T>({
           <RiArrowDownSLine className='ui:size-5' />
         </Button>
         <ul role='menu'
-          className={cn(clsx('ui:z-1000 ui:absolute ui:transition-all ui:flex ui:flex-col ui:p-2 ui:gap-2 ui:rounded-lg ui:shadow ui:w-full ui:bg-white ui:max-h-[500px] ui:overflow-auto ui:border ui:border-neutral-200',
+          className={cn(clsx('ui:z-999 ui:absolute ui:transition-all ui:flex ui:flex-col ui:p-2 ui:gap-2 ui:rounded-lg ui:shadow ui:w-full ui:bg-white ui:max-h-[500px] ui:overflow-auto ui:border ui:border-neutral-200',
             {
               'ui:top-[100%] ui:opacity-0 ui:pointer-events-none': !visible,
               'ui:top-[calc(100%+1px)] ui:opacity-100': visible

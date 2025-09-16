@@ -14,6 +14,7 @@ import z from 'zod'
 import { CustomerDetails } from './components/customer-details'
 import { OrderSummary } from './components/order-summary'
 import { IGetOrder } from '@/types'
+import { useCheckout } from '@/hooks/use-checkout'
 
 const checkoutSchema = z.object({
   email: z.string().trim().min(1, 'Email address is required').email('Please enter a valid email address.'),
@@ -53,28 +54,31 @@ const checkoutSchema = z.object({
   }),
 })
 
-type CheckoutFormValues = z.infer<typeof checkoutSchema>
+type CheckoutFormValues = z.infer<typeof checkoutSchema>;
+
+const checkoutFormDefaultValues = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  line1: '',
+  line2: '',
+  cardNumber: '',
+  city: '',
+  cvv: '',
+  expiry: '',
+  nameOnCard: '',
+  country: null,
+  state: null,
+  zip: '',
+  deliveryMethod: DELIVERY_METHODS[0]
+}
 
 function CheckoutSection() {
   const { toast } = useToast();
   const { cartItems, discount, clearCart } = useCartContext();
   const router = useRouter();
-  const { isPending, mutate } = useMutation({
-    mutationFn: async (payload: any) => {
-      const requestOptions: RequestInit = {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json" },
-      }
 
-      const response = await fetch('/api/orders', requestOptions);
-      const result = await response.json();
-
-      if (result.error) {
-        throw new Error('We faced a problem processing your checkout. Please try again or contact us.')
-      }
-      return result;
-    },
+  const { isPending, mutate } = useCheckout({
     onError: (error) => {
       toast({
         variant: 'error',
@@ -89,50 +93,16 @@ function CheckoutSection() {
       }
     }
   })
+
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
     mode: 'onBlur',
-    defaultValues: {
-      // email: '',
-      // firstName: '',
-      // lastName: '',
-      // line1: '',
-      // line2: '',
-      // cardNumber: '',
-      // city: '',
-      // cvv: '',
-      // expiry: '',
-      // nameOnCard: '',
-      // state: '',
-      // zip: '',
-      // deliveryMethod: DELIVERY_METHODS[0]
-      email: 'abc@gmail.com',
-      firstName: 'Abc',
-      lastName: 'Xyz',
-      line1: 'No 2, Street 1, Road 3',
-      line2: '',
-      cardNumber: '1111 1111 1111 1111',
-      city: 'Brooklyn',
-      cvv: '234',
-      expiry: '03/30',
-      nameOnCard: 'John Doe',
-      // state: null,
-      zip: '123456',
-      deliveryMethod: DELIVERY_METHODS[0],
-      state: null,
-      country: null
-      // country: {
-      //   iso2: 'US',
-      //   iso3: 'USA',
-      //   name: 'United States'
-      // }
-    },
+    defaultValues: checkoutFormDefaultValues,
     disabled: isPending
   });
   const { handleSubmit } = form;
 
   const handleFormSubmit = handleSubmit(async (data) => {
-
     const subtotal = cartItems.reduce((acc, curr) => {
       return acc + curr.total_sale_price
     }, 0);
