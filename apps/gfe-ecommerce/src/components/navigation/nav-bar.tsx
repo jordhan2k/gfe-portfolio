@@ -73,7 +73,7 @@ const Header = ({ // children prop
       window.removeEventListener('scroll', handleScrollEvent)
     }
   }, [])
-  return <header className={clsx('w-full pt-4 fixed z-1000', {
+  return <header className={clsx('w-full pt-4 fixed z-1001!', {
     'bg-white transition-colors shadow-sm': scrolled
   })}>
     {children}
